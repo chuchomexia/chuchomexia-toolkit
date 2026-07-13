@@ -11,11 +11,24 @@ Skill de una sola entrada con tres workflows reconocidos por intención, no por 
 
 | Señal en la petición del usuario | Workflow | Detalle |
 |---|---|---|
-| No existe `PROJECT.md`/`AGENTS.md`/`CLAUDE.md`, o pide arrancar documentación desde cero | **init** | [reference/08-cuestionario-init.md](reference/08-cuestionario-init.md), [reference/02-agents-claude-md-canon.md](reference/02-agents-claude-md-canon.md) |
+| No existe `PROJECT.md`/`AGENTS.md`/`CLAUDE.md`, o pide arrancar documentación desde cero | **init** | [reference/08-cuestionario-init.md](reference/08-cuestionario-init.md), [reference/02-agents-claude-md-canon.md](reference/02-agents-claude-md-canon.md), [reference/06-taxonomia-docs.md](reference/06-taxonomia-docs.md), [reference/07-index-md-especificacion.md](reference/07-index-md-especificacion.md) |
 | Ya existe la estructura; pide refrescar `PRODUCT.md`/`DESIGN.md`/`ENGINEER.md`, o el agente detecta código nuevo sin reflejo en los docs | **update** | [reference/03-project-md-especificacion.md](reference/03-project-md-especificacion.md), [reference/04-engineer-md-especificacion.md](reference/04-engineer-md-especificacion.md), [reference/05-design-md-especificacion.md](reference/05-design-md-especificacion.md) |
 | Pide poner en orden `PROJECT.md` | **organizar** | [reference/03-project-md-especificacion.md](reference/03-project-md-especificacion.md) |
 
 Antes de actuar, cargar [reference/01-invocacion-y-workflows.md](reference/01-invocacion-y-workflows.md) completo — define matices de cada workflow.
+
+## Qué hace `init`, paso a paso
+
+`init` no es solo generar archivos raíz — arma la estructura documental completa del proyecto en un solo paso:
+
+1. Corre el cuestionario ([reference/08](reference/08-cuestionario-init.md)): nombre/propósito, stack, etapa (greenfield vs. existente), reglas operativas.
+2. Crea `CLAUDE.md` y `AGENTS.md` espejo ([reference/02](reference/02-agents-claude-md-canon.md)).
+3. Crea `ENGINEER.md` ([reference/04](reference/04-engineer-md-especificacion.md)) y `DESIGN.md` ([reference/05](reference/05-design-md-especificacion.md)) — vacíos o mínimos si el proyecto es greenfield, poblados por inferencia del código si ya existe.
+4. Crea `PROJECT.md` — vacío con nota de invitación al braindump si es greenfield; poblado por inferencia inicial (marcada como borrador a validar) si el proyecto ya tiene historia ([reference/03](reference/03-project-md-especificacion.md)).
+5. **Crea el árbol de carpetas de `docs/`** con la taxonomía estándar — `docs/adrs/`, `docs/slices/`, `docs/design/`, `docs/ideas/`, `docs/qa/` ([reference/06](reference/06-taxonomia-docs.md)) — no solo las menciona, las crea en el filesystem, cada una con su propio `INDEX.md` mínimo.
+6. Crea `INDEX.md` en la raíz del repo ([reference/07](reference/07-index-md-especificacion.md)).
+
+Ningún paso de esta lista es opcional dentro de `init` — si el proyecto ya tiene alguna pieza (ej. ya existe `docs/adrs/`), ese paso se salta para esa pieza puntual, pero el resto se completa igual.
 
 ## Regla de espejo CLAUDE.md / AGENTS.md
 
