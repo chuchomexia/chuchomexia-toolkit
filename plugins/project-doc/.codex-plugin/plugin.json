@@ -1,0 +1,11 @@
+{
+  "name": "project-doc",
+  "version": "0.1.0",
+  "description": "Genera y mantiene CLAUDE.md/AGENTS.md (espejo), PROJECT.md y sus derivados (PRODUCT.md/DESIGN.md/ENGINEER.md), y la taxonomía estándar de docs/ para cualquier proyecto.",
+  "author": {
+    "name": "chuchomexia"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["documentation", "claude-md", "agents-md", "docs", "onboarding"],
+  "skills": "./skills/"
+}

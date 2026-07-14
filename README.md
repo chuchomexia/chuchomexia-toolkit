@@ -52,14 +52,26 @@ Para que un equipo lo reciba automáticamente al abrir un repo (sin correr `/plu
 }
 ```
 
-## Instalar en Codex CLI
+## Instalar en Codex CLI (vía marketplace)
 
-Codex no tiene el concepto de marketplace — sus Skills se descubren copiando la carpeta directamente a `.codex/skills/<nombre>/`. Instalación manual:
+Codex también tiene marketplaces, con su propio formato de manifiesto (`.agents/plugins/marketplace.json` + `.codex-plugin/plugin.json` por plugin — distinto al de Claude Code, por eso este repo trae ambos en paralelo). Verificado end-to-end con `codex plugin marketplace add` + `codex plugin add`.
+
+Desde la CLI:
 
 ```bash
-git clone https://github.com/chuchomexia/project-doc-skill.git /tmp/project-doc-skill
-cp -r /tmp/project-doc-skill/plugins/project-doc/skills/project-doc /ruta/a/tu-proyecto/.codex/skills/project-doc
+codex plugin marketplace add chuchomexia/project-doc-skill
+codex plugin add project-doc@chuchomexia-tools
 ```
+
+Desde la UI de Codex ("Add plugin marketplace"):
+
+| Campo | Valor |
+|---|---|
+| Source | `chuchomexia/project-doc-skill` |
+| Git ref | `main` |
+| Sparse paths | (opcional) `.agents/plugins` y `plugins/project-doc`, uno por línea — limita el clone a lo que el marketplace necesita |
+
+Como el repo es privado, Codex necesita las mismas credenciales de git/GitHub que ya uses en tu terminal para acceder a él (igual que Claude Code).
 
 ## CLAUDE.md y AGENTS.md como espejo, no como gemelos idénticos para siempre
 
@@ -67,7 +79,7 @@ cp -r /tmp/project-doc-skill/plugins/project-doc/skills/project-doc /ruta/a/tu-p
 
 ## Estado
 
-Diseño completo, documentado y discutido a fondo (incluyendo una ronda explícita de crítica brutal antes de darlo por bueno). Instalación end-to-end verificada localmente (`claude plugin validate`, `marketplace add`, `install`). **Sin pilotar todavía en un proyecto real** (nadie ha corrido `init`/`update`/`organizar` de punta a punta sobre un repo de trabajo). Cada archivo de `reference/` cierra con una sección "Abierto / sin pilotar" — léela antes de asumir que algo aquí está validado.
+Diseño completo, documentado y discutido a fondo (incluyendo una ronda explícita de crítica brutal antes de darlo por bueno). Instalación end-to-end verificada localmente en ambas herramientas (`claude plugin validate`/`marketplace add`/`install`, y `codex plugin marketplace add`/`codex plugin add`). **Sin pilotar todavía en un proyecto real** (nadie ha corrido `init`/`update`/`organizar` de punta a punta sobre un repo de trabajo). Cada archivo de `reference/` cierra con una sección "Abierto / sin pilotar" — léela antes de asumir que algo aquí está validado.
 
 Próximo paso natural: pilotar `init` en un proyecto real (no Colsanitas) antes de invitar a más gente al marketplace.
 
@@ -77,11 +89,27 @@ El repo es privado en GitHub. Para que un compañero pueda instalar desde acá, 
 
 ## Agregar más skills a este marketplace
 
-Este repo está pensado para crecer más allá de `project-doc`. Para sumar una nueva skill:
+Este repo está pensado para crecer más allá de `project-doc`. Para sumar una nueva skill, en ambas herramientas a la vez:
 
-1. Crear `plugins/<nombre-skill>/.claude-plugin/plugin.json` y `plugins/<nombre-skill>/skills/<nombre-skill>/SKILL.md`.
-2. Agregar una entrada en `plugins` dentro de `.claude-plugin/marketplace.json` con `"source": "./plugins/<nombre-skill>"`.
-3. Validar con `claude plugin validate .` antes de hacer commit.
+1. Crear `plugins/<nombre-skill>/skills/<nombre-skill>/SKILL.md` (compartido por ambas).
+2. Crear `plugins/<nombre-skill>/.claude-plugin/plugin.json` (Claude Code — sin `version` si quieres que cada commit cuente como versión nueva).
+3. Crear `plugins/<nombre-skill>/.codex-plugin/plugin.json` (Codex — `version` es obligatorio ahí, hay que subirla a mano en cada release).
+4. Agregar una entrada en `.claude-plugin/marketplace.json` (`"source": "./plugins/<nombre-skill>"`).
+5. Agregar una entrada equivalente en `.agents/plugins/marketplace.json` (`"source": {"source": "local", "path": "./plugins/<nombre-skill>"}`).
+6. Validar con `claude plugin validate .` antes de hacer commit. Codex no trae un comando de validación equivalente todavía — probar con `codex plugin marketplace add ./` + `codex plugin add <nombre>@chuchomexia-tools` localmente.
+
+## Asimetría entre Claude Code y Codex (a tener presente)
+
+Ambas herramientas leen `SKILL.md` igual, pero el resto del empaquetado difiere:
+
+| | Claude Code | Codex |
+|---|---|---|
+| Manifiesto de marketplace | `.claude-plugin/marketplace.json` | `.agents/plugins/marketplace.json` |
+| Manifiesto de plugin | `plugins/<n>/.claude-plugin/plugin.json` | `plugins/<n>/.codex-plugin/plugin.json` |
+| `version` en el manifiesto | Opcional (se recomienda omitir en desarrollo activo) | Obligatorio |
+| Comando de instalación | `/plugin install <n>@<marketplace>` | `codex plugin add <n>@<marketplace>` |
+
+Esto significa que **cada release toca dos archivos de versión** (`.claude-plugin/plugin.json` no necesita bump si se omite `version`, pero `.codex-plugin/plugin.json` sí). Fácil de olvidar — vale la pena revisar antes de cada push si cambió algo sustancial en `skills/project-doc/`.
 
 ## Estructura del repo
 
@@ -89,17 +117,21 @@ Este repo está pensado para crecer más allá de `project-doc`. Para sumar una 
 project-doc-skill/
   README.md
   .claude-plugin/
-    marketplace.json          — catálogo del marketplace
+    marketplace.json              — catálogo del marketplace (Claude Code)
+  .agents/plugins/
+    marketplace.json              — catálogo del marketplace (Codex)
   plugins/
     project-doc/
       .claude-plugin/
-        plugin.json            — manifiesto del plugin
+        plugin.json                — manifiesto del plugin (Claude Code)
+      .codex-plugin/
+        plugin.json                — manifiesto del plugin (Codex)
       skills/
         project-doc/
-          SKILL.md              — entrada delgada (frontmatter + índice de workflows)
-          reference/            — especificación completa, cargada bajo demanda
+          SKILL.md                  — entrada delgada (frontmatter + índice de workflows), compartida
+          reference/                — especificación completa, cargada bajo demanda, compartida
   .claude/skills/project-doc  — symlink a plugins/project-doc/skills/project-doc (dogfooding)
   .codex/skills/project-doc   — symlink a plugins/project-doc/skills/project-doc (dogfooding)
 ```
 
-Inspirado en la arquitectura de [Impeccable](https://github.com/pbakaus/impeccable) (entrada única + progressive disclosure) y en la [documentación oficial de marketplaces de Claude Code](https://code.claude.com/docs/en/plugin-marketplaces).
+Inspirado en la arquitectura de [Impeccable](https://github.com/pbakaus/impeccable) (entrada única + progressive disclosure), en la [documentación oficial de marketplaces de Claude Code](https://code.claude.com/docs/en/plugin-marketplaces) y en la [documentación oficial de plugins de Codex](https://developers.openai.com/codex/plugins/build).

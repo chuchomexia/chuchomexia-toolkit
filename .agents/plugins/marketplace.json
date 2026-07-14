@@ -1,0 +1,20 @@
+{
+  "name": "chuchomexia-tools",
+  "interface": {
+    "displayName": "chuchomexia tools"
+  },
+  "plugins": [
+    {
+      "name": "project-doc",
+      "source": {
+        "source": "local",
+        "path": "./plugins/project-doc"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
