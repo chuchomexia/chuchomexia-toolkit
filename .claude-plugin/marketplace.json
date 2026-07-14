@@ -1,0 +1,14 @@
+{
+  "name": "chuchomexia-tools",
+  "owner": {
+    "name": "chuchomexia"
+  },
+  "description": "Marketplace privado de skills para estandarizar documentación y flujos de proyecto.",
+  "plugins": [
+    {
+      "name": "project-doc",
+      "source": "./plugins/project-doc",
+      "description": "Genera y mantiene CLAUDE.md/AGENTS.md, PROJECT.md y la taxonomía de docs/ de un proyecto."
+    }
+  ]
+}
