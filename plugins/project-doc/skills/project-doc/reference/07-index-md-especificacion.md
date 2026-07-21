@@ -2,16 +2,24 @@
 
 ## Regla general
 
-Cada carpeta documental relevante tiene un `INDEX.md`. Debe orientar, no resumir el contenido que indexa.
+Cada ámbito documental tiene un `INDEX.md`: raíz Git, `docs/` transversal y cada `<frente>/docs/`.
 
 ## Tamaño
 
-El límite estricto es menos de 200 líneas. La meta normal es 20–60 líneas; superar 100 líneas exige revisar si faltan subíndices, categorías o si se está duplicando contenido sustantivo.
+Límite estricto: menos de 200 líneas. Meta habitual: 20–60. Superar 100 exige revisar categorías o subíndices.
 
 ## Índice raíz
 
-Incluir propósito de una línea, orden de lectura mínimo (`NEXT_STEP.md` si existe, luego `INDEX.md`), mapa de primer nivel y enlaces condicionales a documentación especializada.
+Incluye propósito, lectura mínima, mapa de frentes y enlaces condicionales a documentos raíz y a cada índice propietario.
 
-## Índice de carpeta
+## Índice transversal
 
-Indicar qué contiene, qué no contiene y una lista de archivos con una línea de propósito. No incluir historial, decisiones extensas ni resúmenes que deban mantenerse sincronizados.
+Lista ADR y slices compartidos. No replica el mapa interno de frontend/backend.
+
+## Índice de frente
+
+Define qué pertenece al frente, qué no, y enlaza sus áreas propias. No apunta a routers duplicados.
+
+## Validación
+
+Comprobar límite de líneas y resolución de enlaces después de cada movimiento documental.

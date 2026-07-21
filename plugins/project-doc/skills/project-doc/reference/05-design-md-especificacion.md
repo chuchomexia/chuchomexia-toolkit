@@ -1,19 +1,19 @@
-﻿# DESIGN.md y DESIGN.agent.md — especificación
+﻿# DESIGN.md — especificación
 
-## Separación de responsabilidades
+## Ownership
 
-`DESIGN.md` es el resumen canónico del sistema visual. `DESIGN.agent.md` es su versión operativa para agentes: una o dos páginas que se carga solo en tareas visuales, de UX o accesibilidad.
+`DESIGN.md` vive donde se implementa y mantiene el sistema visual. En un monorepo con un único frontend, la ubicación normal es `frontend/DESIGN.md`; con varias UIs, cada frente puede tener su propio `DESIGN.md` si sus sistemas visuales son realmente independientes.
 
-`DESIGN.agent.md` debe incluir únicamente principios no negociables, sistema visual dominante, requisitos de accesibilidad, estados de interacción y enlaces al detalle. No debe duplicar catálogos, ejemplos o patrones extensos.
-
-## Fuente de detalle
-
-`docs/design/` contiene patrones detallados, catálogo de componentes, ejemplos, wireframes y decisiones visuales. Cada carpeta debe tener un `INDEX.md` corto que oriente al archivo pertinente.
+No crear `DESIGN.md` en backend ni duplicarlo en raíz y frontend.
 
 ## Alcance
 
-Mantener aquí tokens, tipografía, espaciado, patrones de componente, estados y reglas visuales. El producto y alcance funcional viven en `PRODUCT.md`.
+Tokens, tipografía, espaciado, componentes, estados, accesibilidad y reglas visuales. Producto y dominio viven en documentos raíz.
 
-## Mantenimiento
+## Detalle
 
-El agente deriva y actualiza estos documentos desde evidencia de código y UI. Si `DESIGN.agent.md` y `DESIGN.md` entran en conflicto, `DESIGN.md` y los documentos específicos de `docs/design/` son la referencia para corregir el resumen.
+Patrones, catálogo, ejemplos, prototipos y referencias viven en `<frente>/docs/design/`. `DESIGN.md` permanece corto y enlaza el detalle.
+
+## Actualización
+
+Derivar de evidencia real de código/UI. Si cambia el frente propietario, mover el documento y registrar la decisión de ownership.
