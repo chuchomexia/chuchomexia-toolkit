@@ -2,31 +2,27 @@
 
 ## Objetivo
 
-`AGENTS.md` y `CLAUDE.md` son routers de contexto, no manuales del proyecto. Deben poder leerse en una pasada y cargar únicamente el contexto necesario para la tarea actual.
+Son routers de contexto del repositorio completo. Deben ser cortos, equivalentes al crearse y ubicarse únicamente en la raíz Git.
 
-## Regla de espejo
+## Monorepos
 
-`init` crea ambos archivos con el mismo contenido. En `update`, si ya divergen, no igualarlos en silencio: señalarlo y pedir decisión al usuario.
+No crear routers adicionales en `frontend/`, `backend/`, `apps/*` o `packages/*`. Esos ámbitos se descubren desde el router raíz y se especializan mediante `docs/INDEX.md` del frente.
 
-## Lectura mínima obligatoria
+## Lectura mínima
 
-1. `NEXT_STEP.md` o equivalente, solo si existe.
-2. `INDEX.md` de la raíz.
+1. `NEXT_STEP.md` si existe.
+2. `INDEX.md` raíz.
+3. Solo los documentos condicionados por la tarea.
 
 ## Carga condicional
 
-- Cambio técnico, datos, pruebas, comandos o despliegue: `ENGINEER.md`.
-- Cambio visual, UX o accesibilidad: `DESIGN.agent.md`.
-- Cambio de contrato: OpenAPI y consumidores afectados.
-- Cambio de flujo: solo el documento o slice afectado.
-- Contexto de producto: `PRODUCT.md` solo si la tarea cambia comportamiento, alcance o reglas de negocio.
+- Producto o dominio: `PRODUCT.md`, `PROJECT.md` o documento de dominio raíz.
+- Ingeniería: `ENGINEER.md` raíz.
+- UI/UX: `DESIGN.md` del frente propietario.
+- Frente específico: `<frente>/docs/INDEX.md`.
+- Contrato: OpenAPI y consumidores.
+- Decisión o slice transversal: `docs/adrs/` o `docs/slices/`.
 
-## Reglas de trabajo
+## Divergencia
 
-- Mantener el diff mínimo; reutilizar patrones existentes; no revertir cambios ajenos.
-- Verificar el cambio en proporción a su riesgo.
-- Referenciar archivos concretos en vez de cargar árboles documentales completos.
-
-## Qué no incluir
-
-No incluir arquitectura detallada, comandos, catálogo de componentes, ejemplos extensos ni guías de testing. Esos contenidos viven en `ENGINEER.md` o `docs/`.
+`init` crea `AGENTS.md` y `CLAUDE.md` con el mismo contenido. `update` no iguala divergencias existentes sin informar al usuario.

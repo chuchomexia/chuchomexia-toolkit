@@ -1,24 +1,32 @@
-# Invocación y workflows
+﻿# Invocación y workflows
 
-## Modelo: una skill, tres workflows
+## Paso cero: resolver alcance
 
-`project-doc` es una sola skill. No se invoca con un subcomando literal — el agente reconoce por lenguaje natural cuál de los tres workflows aplica:
+Antes de cualquier workflow, localizar la raíz Git y detectar frentes (`apps/`, `packages/`, `frontend/`, `backend/`, etc.). No asumir que cada carpeta es un repositorio independiente. Cargar [10-monorepos-y-ownership.md](10-monorepos-y-ownership.md) cuando exista más de un frente.
 
-| Workflow | Se activa cuando... | Qué hace |
-|---|---|---|
-| **init** | El proyecto no tiene `PROJECT.md`/`AGENTS.md`/`docs/` estructurado, o el usuario pide arrancar documentación desde cero. | Corre el cuestionario ([08](08-cuestionario-init.md)), crea `AGENTS.md`/`CLAUDE.md` ([02](02-agents-claude-md-canon.md)), `ENGINEER.md` ([04](04-engineer-md-especificacion.md)), `PROJECT.md` vacío o poblado por inferencia si el proyecto ya tiene código ([03](03-project-md-especificacion.md)), la taxonomía de `docs/` ([06](06-taxonomia-docs.md)) e `INDEX.md` por carpeta ([07](07-index-md-especificacion.md)). |
-| **update** | Ya existe la estructura y el agente detecta drift (código nuevo sin reflejo en `PROJECT.md`/`INDEX.md`), o el usuario pide explícitamente refrescar los derivados. | Revisa `PROJECT.md` en busca de información nueva que deba reflejarse en `PRODUCT.md`/`DESIGN.md`/`ENGINEER.md`, y los actualiza. Nunca reescribe `PROJECT.md` en este workflow — solo lee de él. |
-| **organizar** | El usuario pide explícitamente poner en orden `PROJECT.md` (típicamente porque hizo varios braindumps seguidos y el archivo se volvió difícil de navegar). | Reordena, categoriza y hace housekeeping de `PROJECT.md` **sin eliminar ni resumir contenido**. Ver reglas exactas en [03-project-md-especificacion.md](03-project-md-especificacion.md). |
+## Workflows
 
-## Por qué no es un subcomando literal
+### init
 
-Se consideró un formato tipo `/project-doc init`, pero el usuario prefiere que la skill entienda la intención directamente desde una petición natural ("ayúdame a montar la documentación de este proyecto", "actualiza los docs con lo que hicimos hoy", "el PROJECT.md ya está muy desordenado, ponlo en orden"). Esto reduce fricción de adopción para colegas que no memorizan comandos de skills.
+1. Resolver topología y ownership.
+2. Ejecutar el cuestionario.
+3. Crear un solo par `AGENTS.md`/`CLAUDE.md` y un solo `ENGINEER.md` en la raíz Git.
+4. Crear documentos de producto/dominio en raíz.
+5. Crear `docs/` transversal y `docs/` por frente según ownership.
+6. Crear `DESIGN.md` en el frente propietario de UI.
+7. Crear índices y validar enlaces.
 
-## Choque con la skill nativa `init`
+### update
 
-Existe una skill nativa de Claude Code llamada `init`: *"Initialize a new CLAUDE.md file with codebase documentation"*. Decisión: `project-doc` **no** se llama `init` ni intenta redefinir esa skill nativa. Es una skill separada, con su propio nombre y trigger, que hace un trabajo más amplio (no solo `CLAUDE.md`, sino toda la jerarquía documental). Si en el futuro se empaqueta en un marketplace privado, esto evita colisión de nombre con el marketplace público de Anthropic.
+Revisar drift por ámbito. Actualizar el documento propietario; no crear una copia en otro frente. Si cambia ownership, mover el archivo, reparar enlaces y registrar un ADR.
 
-## Abierto / sin pilotar
+### organizar
 
-- No se ha probado en un proyecto real si el reconocimiento por lenguaje natural es suficientemente confiable para distinguir `update` de `organizar` cuando el usuario pide algo ambiguo como "arregla el PROJECT.md". Puede requerir una pregunta de desambiguación la primera vez que ocurra.
-- El criterio de "detecta drift" en `update` no está especificado a nivel de implementación (¿cómo sabe el agente que hay drift sin releer todo el código en cada sesión?). Queda pendiente para la fase de construcción de la skill.
+Ordenar `PROJECT.md` sin eliminar ni resumir contenido. No cambia ownership documental salvo petición explícita.
+
+## Validación obligatoria
+
+- No hay `AGENTS.md`, `CLAUDE.md` o `ENGINEER.md` duplicados dentro del mismo repositorio Git.
+- Todos los enlaces locales resuelven.
+- Todos los índices permanecen debajo de 200 líneas.
+- La raíz no contiene documentación exclusiva de un frente y viceversa.
