@@ -1,23 +1,19 @@
-# DESIGN.md — especificación
+﻿# DESIGN.md y DESIGN.agent.md — especificación
+
+## Separación de responsabilidades
+
+`DESIGN.md` es el resumen canónico del sistema visual. `DESIGN.agent.md` es su versión operativa para agentes: una o dos páginas que se carga solo en tareas visuales, de UX o accesibilidad.
+
+`DESIGN.agent.md` debe incluir únicamente principios no negociables, sistema visual dominante, requisitos de accesibilidad, estados de interacción y enlaces al detalle. No debe duplicar catálogos, ejemplos o patrones extensos.
+
+## Fuente de detalle
+
+`docs/design/` contiene patrones detallados, catálogo de componentes, ejemplos, wireframes y decisiones visuales. Cada carpeta debe tener un `INDEX.md` corto que oriente al archivo pertinente.
 
 ## Alcance
 
-Solo sistema de diseño **visual**: tokens (color, espaciado, tipografía), fuentes, radios, patrones de componente, estados (loading/empty/error), y lo estrictamente inseparable de una decisión visual (ej. "los estados de carga siempre muestran skeleton, nunca spinner, porque..." — la razón es de producto, pero la regla es visual y no tiene sentido separarla).
+Mantener aquí tokens, tipografía, espaciado, patrones de componente, estados y reglas visuales. El producto y alcance funcional viven en `PRODUCT.md`.
 
-Todo lo demás de producto (qué hace el producto, para quién, alcance funcional) vive en `PRODUCT.md`, no aquí. Esta separación se acordó explícitamente para no solapar `DESIGN.md` con `PRODUCT.md` ni con `PROJECT.md`.
+## Mantenimiento
 
-## Origen de la idea
-
-Inspirado en la referencia que aportó el usuario de un `DESIGN.md` estilo Google Stitch — una guía del sistema de diseño definida para el proyecto. La versión original incluía algo de producto; en esta metodología se recorta deliberadamente para evitar el solapamiento.
-
-## Quién escribe qué
-
-Igual que `ENGINEER.md`: es un derivado, mantenido por el agente a partir de `PROJECT.md` y de evidencia real del código/UI (wireframes, prototipos en `docs/design/`, ver [06-taxonomia-docs.md](06-taxonomia-docs.md)). El humano no lo edita a mano.
-
-## Cuándo madurarlo
-
-Consistente con la lección ya validada en Colsanitas (`07-lecciones-aprendidas.md` del paquete metodológico general): `DESIGN.md` no debería exigirse desde el día cero. Generarlo bien requiere evidencia funcional y visual real. Se recomienda crearlo vacío o mínimo en `init`, y madurarlo durante el proyecto conforme haya decisiones de diseño reales que documentar — el workflow `update` es el que lo va llenando.
-
-## Abierto / sin pilotar
-
-- No se ha validado en la práctica si "lo estrictamente inseparable de producto" es un límite claro de aplicar consistentemente sesión tras sesión, o si en la práctica el agente termina colando contenido de producto de todos modos. Vale la pena revisar esto tras el primer piloto.
+El agente deriva y actualiza estos documentos desde evidencia de código y UI. Si `DESIGN.agent.md` y `DESIGN.md` entran en conflicto, `DESIGN.md` y los documentos específicos de `docs/design/` son la referencia para corregir el resumen.
