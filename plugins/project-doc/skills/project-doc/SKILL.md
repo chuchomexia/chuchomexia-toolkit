@@ -1,4 +1,4 @@
-﻿---
+---
 name: project-doc
 description: Genera y mantiene documentación estructural para repositorios simples y monorepos (AGENTS.md, CLAUDE.md, PROJECT/PRODUCT, ENGINEER, DESIGN, ownership por frente, docs/adrs, docs/slices e INDEX). Úsala al iniciar, ordenar, auditar o actualizar documentación de un proyecto, especialmente cuando existen frontend/backend/apps/packages con documentación propia.
 ---
@@ -51,3 +51,18 @@ backend/
 ```
 
 La estructura exacta se adapta a los frentes detectados; `frontend` y `backend` son ejemplos, no nombres obligatorios.
+
+## Feedback
+
+Si esta skill te dio una instrucción incorrecta o incompleta, o tuviste que ir en contra de ella
+para lograr el resultado correcto, abre un issue en el repo del marketplace (protocolo completo
+en `FEEDBACK.md` en la raíz del repo, si está presente en tu checkout):
+
+```bash
+gh issue create --repo chuchomexia/project-doc-skill \
+  --title "[project-doc] <resumen corto>" --label skill-feedback \
+  --body "Qué decía la skill / qué pasó / qué hiciste en su lugar"
+```
+
+Si `gh` no está disponible o autenticado, dile al usuario que hay feedback pendiente y sugiere
+abrirlo manualmente en `github.com/chuchomexia/project-doc-skill/issues/new?labels=skill-feedback`.

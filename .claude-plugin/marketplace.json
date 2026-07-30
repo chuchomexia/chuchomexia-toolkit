@@ -1,14 +1,19 @@
 {
-  "name": "chuchomexia-tools",
+  "name": "chuchomexia-toolkit",
   "owner": {
     "name": "chuchomexia"
   },
-  "description": "Marketplace privado de skills para estandarizar documentación y flujos de proyecto.",
+  "description": "Marketplace privado de skills para estandarizar documentación, diseño y flujos de proyecto.",
   "plugins": [
     {
       "name": "project-doc",
       "source": "./plugins/project-doc",
       "description": "Genera y mantiene CLAUDE.md/AGENTS.md, PROJECT.md y la taxonomía de docs/ de un proyecto."
+    },
+    {
+      "name": "m3-expressive",
+      "source": "./plugins/m3-expressive",
+      "description": "Diseña o corrige interfaces usando Material 3 Expressive como filosofía rectora: color, tipografía, forma, motion y accesibilidad."
     }
   ]
 }

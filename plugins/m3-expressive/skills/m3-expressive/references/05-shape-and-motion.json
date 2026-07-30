@@ -1,0 +1,119 @@
+{
+  "module_meta": {
+    "id": "shape-motion",
+    "title": "Forma y movimiento",
+    "version": "2026.07.29",
+    "language": "es",
+    "authority": "mixed",
+    "depends_on": [
+      "03-token-architecture.json",
+      "02-philosophy-and-tactics.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "shape": {
+    "capabilities": [
+      "35 formas en la biblioteca expresiva",
+      "escala de radios",
+      "esquinas asimétricas",
+      "shape morph integrado"
+    ],
+    "corner_radius_tokens_dp": {
+      "none": 0,
+      "extraSmall": 4,
+      "small": 8,
+      "medium": 12,
+      "large": 20,
+      "extraLarge": 32,
+      "extraExtraLarge": 48,
+      "full": "semantic_full_rounding"
+    },
+    "morph_can_communicate": [
+      "estado de interacción",
+      "acción en progreso",
+      "cambio del entorno",
+      "continuidad entre dos estados"
+    ],
+    "principles": [
+      "La forma es versátil y no tiene una semántica universal por sí sola.",
+      "La tensión aparece al cambiar inesperadamente entre formas suaves y angulares.",
+      "Usar formas abstractas con moderación en UI funcional.",
+      "Usar mayor libertad en recortes de imagen, avatares, gráficos y hero moments.",
+      "La morphing debe responder a tap, swipe, scroll, release, long press o cambio real de estado.",
+      "La forma nunca debe ocultar el área táctil ni reducir la prioridad de una acción esencial."
+    ]
+  },
+  "motion": {
+    "system": "physics_based_springs",
+    "schemes": {
+      "expressive": "Esquema recomendado para la mayoría de situaciones, especialmente interacciones clave y hero moments; el movimiento espacial puede sobrepasar el valor final y rebotar.",
+      "standard": "Esquema funcional con rebote mínimo para productos utilitarios o momentos donde la calma y precisión dominan."
+    },
+    "spring_attributes": [
+      "stiffness",
+      "damping",
+      "initialVelocity"
+    ],
+    "token_axes": {
+      "styles": {
+        "spatial": {
+          "properties": [
+            "x",
+            "y",
+            "rotation",
+            "size",
+            "scale",
+            "roundedCorners",
+            "shapeMorph"
+          ],
+          "overshoot": "allowed_and_expected_in_expressive_scheme"
+        },
+        "effects": {
+          "properties": [
+            "color",
+            "opacity"
+          ],
+          "overshoot": "forbidden"
+        }
+      },
+      "speeds": {
+        "fast": "Elementos pequeños como botones y switches.",
+        "default": "La mayoría de transiciones, sheets y navegación expandida.",
+        "slow": "Cambios de pantalla completa o elementos de gran tamaño."
+      },
+      "token_pattern": "md.sys.motion.spring.{speed}.{style}",
+      "examples": [
+        "md.sys.motion.spring.fast.spatial",
+        "md.sys.motion.spring.fast.effects",
+        "md.sys.motion.spring.default.spatial",
+        "md.sys.motion.spring.default.effects",
+        "md.sys.motion.spring.slow.spatial",
+        "md.sys.motion.spring.slow.effects"
+      ]
+    },
+    "rules": [
+      "Elegir el esquema a nivel de producto y reutilizar los mismos token IDs.",
+      "Permitir interrupción, retargeting y gestos sin saltos.",
+      "Conservar continuidad espacial entre estado inicial y final.",
+      "Proporcionar una variante reduced motion que elimine rebotes, morph decorativo y desplazamientos grandes.",
+      "No inventar stiffness o damping oficiales; si la plataforma requiere números, marcarlos como aproximación de implementación y mantenerlos detrás de tokens."
+    ],
+    "web_css_approximation": {
+      "context": "CSS no tiene un modelo de fisica de resortes nativo (stiffness/damping/initialVelocity). transition-timing-function solo acepta curvas de Bezier o keyframes manuales.",
+      "rule": "Un cubic-bezier que imita un spring es SIEMPRE una aproximacion visual, no una conversion matematica de stiffness/damping. Etiquetalo con truth_label 'platform_approximation', nunca como valor oficial de Motion Specs.",
+      "guidance": [
+        "Effects springs (color, opacity): usar una curva sin overshoot, ej. cubic-bezier(0.2, 0, 0, 1) -- jamas una curva con rebote, sin importar el esquema.",
+        "Spatial springs, esquema standard: curva sin rebote o rebote minimo, ej. cubic-bezier(0.2, 0, 0, 1).",
+        "Spatial springs, esquema expressive: si el proyecto exige overshoot en CSS puro, usar una curva con rebote leve (ej. cubic-bezier(0.34, 1.56, 0.64, 1)) solo como aproximacion declarada -- no citarla como el spring oficial de Material."
+      ],
+      "preferred_alternative": "Si el stack lo permite, usar una libreria con springs reales (Motion One, Framer Motion / motion, react-spring, o Android/Compose/Flutter con su motion API nativa) en vez de cubic-bezier -- el resultado es mas fiel al modelo M3 que cualquier aproximacion CSS.",
+      "truth_label_required": "platform_approximation"
+    }
+  },
+  "fidelity_limits": [
+    "Se conoce la existencia y el uso de las 35 formas, pero este paquete no contiene sus geometrías vectoriales.",
+    "No se incluyen stiffness, damping e initial velocity exactos por esquema, velocidad, plataforma o dispositivo.",
+    "Los radios incluidos no sustituyen los tokens de anatomía de cada componente."
+  ],
+  "implementation_rule": "Cuando falten geometrías o constantes oficiales, conservar nombres semánticos y usar assets o tokens oficiales si están disponibles. Cualquier aproximación debe quedar detrás de un token y etiquetada."
+}

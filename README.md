@@ -1,8 +1,16 @@
-# project-doc
+# chuchomexia-toolkit
 
-Marketplace privado de skills para estandarizar documentación de proyectos, empezando por `project-doc`: monta y mantiene `CLAUDE.md`/`AGENTS.md`, un archivo de contexto vivo (`PROJECT.md`), sus derivados (`PRODUCT.md`, `DESIGN.md`, `ENGINEER.md`), una taxonomía estándar de `docs/`, e `INDEX.md` por carpeta.
+Marketplace privado de skills de Claude Code / Codex. Empezó con una sola skill (`project-doc`)
+pero está pensado para crecer — hoy incluye también `m3-expressive`, una skill de diseño de UI.
 
-Nace de destilar la metodología usada en un proyecto real (Colsanitas/Tikka) y generalizarla para cualquier proyecto, nuevo o existente, propio o de un equipo que hoy no tiene ninguna estructura de este tipo.
+## Skills en este marketplace
+
+| Skill | Qué hace |
+|---|---|
+| [`project-doc`](plugins/project-doc/skills/project-doc/SKILL.md) | Monta y mantiene `CLAUDE.md`/`AGENTS.md`, un archivo de contexto vivo (`PROJECT.md`), sus derivados (`PRODUCT.md`, `DESIGN.md`, `ENGINEER.md`), una taxonomía estándar de `docs/`, e `INDEX.md` por carpeta. |
+| [`m3-expressive`](plugins/m3-expressive/skills/m3-expressive/SKILL.md) | Diseña o corrige cualquier interfaz usando Material 3 Expressive de Google como filosofía rectora — color, tipografía, forma, motion y accesibilidad. |
+
+`project-doc` nace de destilar la metodología usada en un proyecto real (Colsanitas/Tikka) y generalizarla para cualquier proyecto, nuevo o existente, propio o de un equipo que hoy no tiene ninguna estructura de este tipo.
 
 ## Por qué existe
 
@@ -27,14 +35,16 @@ Este repo **es** un marketplace de Claude Code (`.claude-plugin/marketplace.json
 
 ```
 /plugin marketplace add chuchomexia/project-doc-skill
-/plugin install project-doc@chuchomexia-tools
+/plugin install project-doc@chuchomexia-toolkit
+/plugin install m3-expressive@chuchomexia-toolkit
 ```
 
 O desde la CLI, sin sesión interactiva:
 
 ```bash
 claude plugin marketplace add chuchomexia/project-doc-skill
-claude plugin install project-doc@chuchomexia-tools
+claude plugin install project-doc@chuchomexia-toolkit
+claude plugin install m3-expressive@chuchomexia-toolkit
 ```
 
 Para que un equipo lo reciba automáticamente al abrir un repo (sin correr `/plugin marketplace add` a mano), se puede declarar en `.claude/settings.json` de ese repo:
@@ -42,15 +52,20 @@ Para que un equipo lo reciba automáticamente al abrir un repo (sin correr `/plu
 ```json
 {
   "extraKnownMarketplaces": {
-    "chuchomexia-tools": {
-      "source": { "source": "github", "repo": "chuchomexia/project-doc-skill" }
+    "chuchomexia-toolkit": {
+      "source": { "source": "github", "repo": "chuchomexia/project-doc-skill" },
+      "autoUpdate": true
     }
   },
   "enabledPlugins": {
-    "project-doc@chuchomexia-tools": true
+    "project-doc@chuchomexia-toolkit": true,
+    "m3-expressive@chuchomexia-toolkit": true
   }
 }
 ```
+
+`autoUpdate: true` hace que Claude Code refresque el catálogo del marketplace solo — ver la
+sección "Cómo se enteran los agentes de una actualización" más abajo para lo que sí y no cubre.
 
 ## Instalar en Codex CLI (vía marketplace)
 
@@ -60,7 +75,8 @@ Desde la CLI:
 
 ```bash
 codex plugin marketplace add chuchomexia/project-doc-skill
-codex plugin add project-doc@chuchomexia-tools
+codex plugin add project-doc@chuchomexia-toolkit
+codex plugin add m3-expressive@chuchomexia-toolkit
 ```
 
 Desde la UI de Codex ("Add plugin marketplace"):
@@ -69,7 +85,7 @@ Desde la UI de Codex ("Add plugin marketplace"):
 |---|---|
 | Source | `chuchomexia/project-doc-skill` |
 | Git ref | `main` |
-| Sparse paths | (opcional) `.agents/plugins` y `plugins/project-doc`, uno por línea — limita el clone a lo que el marketplace necesita |
+| Sparse paths | (opcional) `.agents/plugins`, `plugins/project-doc` y `plugins/m3-expressive`, uno por línea — limita el clone a lo que el marketplace necesita |
 
 Como el repo es privado, Codex necesita las mismas credenciales de git/GitHub que ya uses en tu terminal para acceder a él (igual que Claude Code).
 
@@ -87,6 +103,37 @@ Próximo paso natural: pilotar `init` en un proyecto real (no Colsanitas) antes 
 
 El repo es privado en GitHub. Para que un compañero pueda instalar desde acá, primero necesita acceso de lectura al repo (agregarlo como colaborador, o mover el repo a una organización con acceso compartido). El marketplace en sí no gestiona permisos — solo el repo de GitHub que lo hospeda.
 
+## Cómo se enteran los agentes de una actualización
+
+No hay push: nadie recibe un aviso cuando cambias una skill. Es pull, y hay dos capas que
+actualizar por separado.
+
+1. **El catálogo del marketplace** (qué plugins existen y en qué commit está cada uno). Se
+   refresca con `/plugin marketplace update chuchomexia-toolkit` (o el equivalente `claude
+   plugin marketplace update` en CLI), o solo si cada persona configuró `"autoUpdate": true` en
+   `extraKnownMarketplaces` (ver ejemplo arriba) — con eso Claude Code lo revisa
+   periódicamente sin comando manual. Un marketplace agregado con un tag o branch fijo se
+   actualiza al último commit de esa ref, no necesariamente a `main` si se ancló distinto.
+2. **El plugin instalado en cada proyecto**, que no se mueve solo aunque el catálogo ya esté
+   actualizado — hay que correr `/plugin install <skill>@chuchomexia-toolkit` de nuevo (o su
+   equivalente Codex) para tomar la versión nueva. Claude Code normalmente pide reiniciar con
+   `/reload-plugins` después de una actualización.
+
+En la práctica: si le pides a alguien del equipo que confirme que tiene la última versión de una
+skill, la pregunta correcta es "¿corriste `/plugin marketplace update` y reinstalaste?", no
+"¿tienes el repo actualizado?" — el checkout de git y el estado de Claude Code/Codex son cosas
+separadas.
+
+## Feedback automático de los agentes
+
+Cada skill de este marketplace termina con una sección "Feedback" que le dice al agente que, si
+detectó que la skill le dio información incorrecta o incompleta, abra un issue en este repo con
+`gh issue create --label skill-feedback`. Esto no es telemetría — depende de que el agente
+efectivamente lo haga y tenga `gh` autenticado contra este repo. Protocolo completo, plantilla y
+qué hacer si `gh` no está disponible en [FEEDBACK.md](FEEDBACK.md).
+
+Para revisar lo acumulado: `gh issue list --repo chuchomexia/project-doc-skill --label skill-feedback`.
+
 ## Agregar más skills a este marketplace
 
 Este repo está pensado para crecer más allá de `project-doc`. Para sumar una nueva skill, en ambas herramientas a la vez:
@@ -96,7 +143,10 @@ Este repo está pensado para crecer más allá de `project-doc`. Para sumar una 
 3. Crear `plugins/<nombre-skill>/.codex-plugin/plugin.json` (Codex — `version` es obligatorio ahí, hay que subirla a mano en cada release).
 4. Agregar una entrada en `.claude-plugin/marketplace.json` (`"source": "./plugins/<nombre-skill>"`).
 5. Agregar una entrada equivalente en `.agents/plugins/marketplace.json` (`"source": {"source": "local", "path": "./plugins/<nombre-skill>"}`).
-6. Validar con `claude plugin validate .` antes de hacer commit. Codex no trae un comando de validación equivalente todavía — probar con `codex plugin marketplace add ./` + `codex plugin add <nombre>@chuchomexia-tools` localmente.
+6. Agregar al final del `SKILL.md` la sección "Feedback" (copiar el bloque de `plugins/m3-expressive/skills/m3-expressive/SKILL.md`) para que la skill quede conectada al protocolo de [FEEDBACK.md](FEEDBACK.md).
+7. Opcional: symlinks de dogfooding `.claude/skills/<nombre-skill>` y `.codex/skills/<nombre-skill>` apuntando a `../../plugins/<nombre-skill>/skills/<nombre-skill>`.
+8. Validar con `claude plugin validate .` antes de hacer commit. Codex no trae un comando de validación equivalente todavía — probar con `codex plugin marketplace add ./` + `codex plugin add <nombre>@chuchomexia-toolkit` localmente.
+9. Revisar periódicamente los issues con label `skill-feedback` (`gh issue list --repo chuchomexia/project-doc-skill --label skill-feedback`) antes de decidir qué corregir en cada skill.
 
 ## Asimetría entre Claude Code y Codex (a tener presente)
 
@@ -116,8 +166,9 @@ Esto significa que **cada release toca dos archivos de versión** (`.claude-plug
 ```
 project-doc-skill/
   README.md
+  FEEDBACK.md                     — protocolo de feedback de agentes hacia el mantenedor
   .claude-plugin/
-    marketplace.json              — catálogo del marketplace (Claude Code)
+    marketplace.json              — catálogo del marketplace (Claude Code), name: chuchomexia-toolkit
   .agents/plugins/
     marketplace.json              — catálogo del marketplace (Codex)
   plugins/
@@ -128,10 +179,21 @@ project-doc-skill/
         plugin.json                — manifiesto del plugin (Codex)
       skills/
         project-doc/
-          SKILL.md                  — entrada delgada (frontmatter + índice de workflows), compartida
+          SKILL.md                  — entrada delgada (frontmatter + índice de workflows) + sección Feedback
           reference/                — especificación completa, cargada bajo demanda, compartida
-  .claude/skills/project-doc  — symlink a plugins/project-doc/skills/project-doc (dogfooding)
-  .codex/skills/project-doc   — symlink a plugins/project-doc/skills/project-doc (dogfooding)
+    m3-expressive/
+      .claude-plugin/
+        plugin.json
+      .codex-plugin/
+        plugin.json
+      skills/
+        m3-expressive/
+          SKILL.md                  — filosofía, tácticas y mapa de referencias + sección Feedback
+          references/                — 14 módulos JSON + cheatsheet, cargados bajo demanda
+  .claude/skills/project-doc    — symlink a plugins/project-doc/skills/project-doc (dogfooding)
+  .claude/skills/m3-expressive  — symlink a plugins/m3-expressive/skills/m3-expressive (dogfooding)
+  .codex/skills/project-doc     — symlink a plugins/project-doc/skills/project-doc (dogfooding)
+  .codex/skills/m3-expressive   — symlink a plugins/m3-expressive/skills/m3-expressive (dogfooding)
 ```
 
 Inspirado en la arquitectura de [Impeccable](https://github.com/pbakaus/impeccable) (entrada única + progressive disclosure), en la [documentación oficial de marketplaces de Claude Code](https://code.claude.com/docs/en/plugin-marketplaces) y en la [documentación oficial de plugins de Codex](https://developers.openai.com/codex/plugins/build).

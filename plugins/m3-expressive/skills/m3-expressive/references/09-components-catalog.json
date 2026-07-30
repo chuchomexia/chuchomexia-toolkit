@@ -1,0 +1,581 @@
+{
+  "module_meta": {
+    "id": "components-catalog",
+    "title": "Catálogo de componentes y cambios expresivos",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "official_summary",
+    "depends_on": [
+      "02-philosophy-and-tactics.json",
+      "03-token-architecture.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "component_catalog": {
+    "all_components": [
+      "app bars",
+      "badges",
+      "button groups",
+      "buttons",
+      "extended FABs",
+      "FAB menu",
+      "floating action buttons",
+      "icon buttons",
+      "segmented buttons",
+      "split buttons",
+      "date pickers",
+      "time pickers",
+      "loading indicator",
+      "progress indicators",
+      "navigation bar",
+      "navigation drawer",
+      "navigation rail",
+      "bottom sheets",
+      "side sheets",
+      "cards",
+      "carousel",
+      "checkbox",
+      "chips",
+      "dialogs",
+      "divider",
+      "lists",
+      "menus",
+      "radio button",
+      "search",
+      "sliders",
+      "snackbar",
+      "switch",
+      "tabs",
+      "text fields",
+      "toolbars",
+      "tooltips"
+    ],
+    "expressive_new_or_updated_2025": [
+      {
+        "name": "app bars",
+        "status": "updated",
+        "expressive_levers": [
+          "flexible layout",
+          "emphasized typography",
+          "contextual resizing",
+          "spring motion"
+        ]
+      },
+      {
+        "name": "button groups",
+        "status": "new",
+        "variants": [
+          "standard",
+          "connected"
+        ],
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "selection_modes": [
+          "single",
+          "multi",
+          "selection-required"
+        ],
+        "expressive_levers": [
+          "shape morph on press and selection",
+          "width changes",
+          "round or square defaults"
+        ],
+        "replacement_note": "Connected button group sustituye segmented button para nuevos diseños."
+      },
+      {
+        "name": "common buttons",
+        "status": "updated",
+        "expressive_levers": [
+          "five-size scale",
+          "stronger shape variation",
+          "emphasized label",
+          "spatial spring feedback"
+        ]
+      },
+      {
+        "name": "extended FAB",
+        "status": "updated",
+        "expressive_levers": [
+          "prominent label",
+          "adaptive extension and collapse",
+          "color hierarchy",
+          "shape and spring motion"
+        ]
+      },
+      {
+        "name": "FAB menu",
+        "status": "new",
+        "action_count": "2–6",
+        "colors": [
+          "primary",
+          "secondary",
+          "tertiary"
+        ],
+        "rules": [
+          "Un tamaño de menú funciona con cualquier tamaño de FAB.",
+          "No usar con extended FAB.",
+          "Reemplaza speed dial y stacks de small FABs.",
+          "Usar contraste entre close button e items.",
+          "Soportar dynamic color."
+        ]
+      },
+      {
+        "name": "floating action buttons",
+        "status": "updated",
+        "expressive_levers": [
+          "size hierarchy",
+          "shape variety",
+          "dynamic color",
+          "motion continuity with FAB menu"
+        ]
+      },
+      {
+        "name": "icon buttons",
+        "status": "updated",
+        "expressive_levers": [
+          "five-size scale",
+          "shape morph",
+          "selected state",
+          "variable icon axes"
+        ]
+      },
+      {
+        "name": "loading indicator",
+        "status": "new",
+        "recommended_for": "Procesos indeterminados de menos de cinco segundos y pull-to-refresh.",
+        "variants": [
+          "contained",
+          "uncontained"
+        ],
+        "rules": [
+          "Reemplaza la mayoría de usos del circular progress indeterminado.",
+          "No es decorativo; siempre representa un proceso.",
+          "No usar si el proceso cambia de indeterminado a determinado.",
+          "Puede escalar y usar una secuencia de shape morph para captar atención."
+        ]
+      },
+      {
+        "name": "navigation bar",
+        "status": "updated",
+        "expressive_levers": [
+          "active indicator",
+          "dynamic color",
+          "shape and motion state transition",
+          "adaptive swap at larger breakpoints"
+        ]
+      },
+      {
+        "name": "navigation rail",
+        "status": "updated",
+        "expressive_levers": [
+          "collapsed and expanded states",
+          "adaptive reveal",
+          "spatial spring",
+          "tonal containment"
+        ]
+      },
+      {
+        "name": "progress indicators",
+        "status": "updated",
+        "expressive_levers": [
+          "clear determinate feedback",
+          "shape variation where semantics remain clear",
+          "effects and spatial spring separation"
+        ]
+      },
+      {
+        "name": "sliders",
+        "status": "updated",
+        "expressive_levers": [
+          "shape-responsive handle",
+          "dynamic track",
+          "spring response to drag and release",
+          "value emphasis"
+        ]
+      },
+      {
+        "name": "split button",
+        "status": "new",
+        "anatomy": [
+          "primary common-button action",
+          "menu icon-button action"
+        ],
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "color_styles": [
+          "elevated",
+          "filled",
+          "tonal",
+          "outlined"
+        ],
+        "expressive_levers": [
+          "menu icon rotates",
+          "menu segment changes shape when activated",
+          "pairs with other buttons of the same size"
+        ]
+      },
+      {
+        "name": "toolbars",
+        "status": "new_or_reframed",
+        "variants": [
+          "docked",
+          "floating-horizontal",
+          "floating-vertical"
+        ],
+        "color_styles": [
+          "standard",
+          "vibrant"
+        ],
+        "rules": [
+          "Docked toolbar reemplaza bottom app bar en nuevos diseños.",
+          "Puede contener buttons, icon buttons y text fields.",
+          "Puede combinarse con FAB para enfatizar una acción.",
+          "No mostrar al mismo tiempo que navigation bar.",
+          "Floating toolbar admite más posiciones y mayor cantidad de acciones."
+        ]
+      }
+    ],
+    "reuse_rule": "Antes de crear un componente nuevo, comparar su propósito y anatomía con todo el catálogo. Si puede resolverse mediante configuración o composición de componentes existentes, preferir composición.",
+    "cheat_sheet": {
+      "verified_on": "2026-07-15",
+      "classification_scope": "Actualización específica del componente dentro de M3 Expressive; no indica compatibilidad general con estilos Expressive.",
+      "status_legend": {
+        "expressive_new": "Componente nuevo presentado con M3 Expressive.",
+        "expressive_updated": "Componente existente con actualización específica M3 Expressive.",
+        "m3_base": "Componente vigente de M3 sin actualización expresiva específica documentada en el lanzamiento.",
+        "m3_base_not_recommended": "Componente documentado, pero no recomendado para nuevos diseños."
+      },
+      "counts": {
+        "total": 36,
+        "expressive_new": 5,
+        "expressive_updated": 9,
+        "m3_base_not_recommended": 1,
+        "m3_base": 21
+      },
+      "important_interpretation": "Un componente M3 base puede formar parte de una experiencia Expressive usando color, tipografía, forma, motion, layout y composición globales. La etiqueta solo refleja si recibió una actualización específica de componente.",
+      "inventory": [
+        {
+          "category": "Buttons",
+          "name": "Button groups",
+          "purpose": "Organiza botones relacionados y selección entre opciones.",
+          "status": "expressive_new",
+          "url": "https://m3.material.io/components/button-groups/overview",
+          "note": "Connected reemplaza segmented buttons."
+        },
+        {
+          "category": "Buttons",
+          "name": "Buttons",
+          "purpose": "Ejecuta la mayoría de acciones de una interfaz.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/buttons/overview",
+          "note": "Escala y opciones expresivas actualizadas."
+        },
+        {
+          "category": "Buttons",
+          "name": "Extended FABs",
+          "purpose": "Acción primaria prominente con icono y label.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/extended-fab/overview",
+          "note": ""
+        },
+        {
+          "category": "Buttons",
+          "name": "FAB menu",
+          "purpose": "Abre 2–6 acciones relacionadas desde un FAB.",
+          "status": "expressive_new",
+          "url": "https://m3.material.io/components/fab-menu/overview",
+          "note": "Reemplaza speed dial y pilas de small FABs."
+        },
+        {
+          "category": "Buttons",
+          "name": "Floating action buttons (FABs)",
+          "purpose": "Acción primaria de alta prioridad.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/floating-action-button/overview",
+          "note": ""
+        },
+        {
+          "category": "Buttons",
+          "name": "Icon buttons",
+          "purpose": "Acciones compactas representadas por un icono.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/icon-buttons/overview",
+          "note": ""
+        },
+        {
+          "category": "Buttons",
+          "name": "Segmented buttons",
+          "purpose": "Selecciona opciones, cambia vistas u ordena contenido.",
+          "status": "m3_base_not_recommended",
+          "url": "https://m3.material.io/components/segmented-buttons/overview",
+          "note": "No recomendado para diseños nuevos; usar connected button groups."
+        },
+        {
+          "category": "Buttons",
+          "name": "Split buttons",
+          "purpose": "Acción principal más menú de acciones relacionadas.",
+          "status": "expressive_new",
+          "url": "https://m3.material.io/components/split-button/overview",
+          "note": ""
+        },
+        {
+          "category": "Date & time pickers",
+          "name": "Date pickers",
+          "purpose": "Selecciona una fecha o rango de fechas.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/date-pickers/overview",
+          "note": ""
+        },
+        {
+          "category": "Date & time pickers",
+          "name": "Time pickers",
+          "purpose": "Selecciona y establece una hora.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/time-pickers/overview",
+          "note": ""
+        },
+        {
+          "category": "Loading & progress",
+          "name": "Loading indicator",
+          "purpose": "Espera indeterminada breve y pull-to-refresh.",
+          "status": "expressive_new",
+          "url": "https://m3.material.io/components/loading-indicator/overview",
+          "note": "Recomendado para procesos de menos de 5 segundos; reemplaza la mayoría de circular indeterminate."
+        },
+        {
+          "category": "Loading & progress",
+          "name": "Progress indicators",
+          "purpose": "Comunica el estado o avance de un proceso.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/progress-indicators/overview",
+          "note": ""
+        },
+        {
+          "category": "Navigation",
+          "name": "Navigation bar",
+          "purpose": "Cambia entre vistas principales en ventanas pequeñas.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/navigation-bar/overview",
+          "note": ""
+        },
+        {
+          "category": "Navigation",
+          "name": "Navigation drawer",
+          "purpose": "Cambia entre vistas mediante un panel de navegación.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/navigation-drawer/overview",
+          "note": ""
+        },
+        {
+          "category": "Navigation",
+          "name": "Navigation rail",
+          "purpose": "Cambia entre vistas en ventanas medianas y grandes.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/navigation-rail/overview",
+          "note": ""
+        },
+        {
+          "category": "Sheets",
+          "name": "Bottom sheets",
+          "purpose": "Contenido secundario anclado a la parte inferior.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/bottom-sheets/overview",
+          "note": ""
+        },
+        {
+          "category": "Sheets",
+          "name": "Side sheets",
+          "purpose": "Contenido secundario anclado a un lateral.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/side-sheets/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "App bars",
+          "purpose": "Navegación, título y acciones en la parte superior.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/app-bars/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Badges",
+          "purpose": "Muestra conteos, notificaciones o estado.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/badges/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Cards",
+          "purpose": "Agrupa contenido y acciones sobre un solo tema.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/cards/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Carousel",
+          "purpose": "Colección desplazable de elementos.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/carousel/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Checkbox",
+          "purpose": "Selección múltiple o activación independiente.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/checkbox/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Chips",
+          "purpose": "Entrada, selección, filtrado o acciones compactas.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/chips/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Dialogs",
+          "purpose": "Prompt importante dentro de un flujo.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/dialogs/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Divider",
+          "purpose": "Separa o agrupa contenido visualmente.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/divider/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Lists",
+          "purpose": "Índice vertical continuo de texto e imágenes.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/lists/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Menus",
+          "purpose": "Lista temporal de opciones.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/menus/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Radio button",
+          "purpose": "Selecciona una opción dentro de un conjunto.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/radio-button/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Search",
+          "purpose": "Introduce una consulta para encontrar información.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/search/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Sliders",
+          "purpose": "Selecciona un valor o rango continuo.",
+          "status": "expressive_updated",
+          "url": "https://m3.material.io/components/sliders/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Snackbar",
+          "purpose": "Actualización breve sobre un proceso de la app.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/snackbar/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Switch",
+          "purpose": "Activa o desactiva una configuración.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/switch/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Tabs",
+          "purpose": "Organiza contenido entre vistas relacionadas.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/tabs/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Text fields",
+          "purpose": "Permite introducir y editar texto.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/text-fields/overview",
+          "note": ""
+        },
+        {
+          "category": "All other components",
+          "name": "Toolbars",
+          "purpose": "Agrupa acciones frecuentes de la página actual.",
+          "status": "expressive_new",
+          "url": "https://m3.material.io/components/toolbars/overview",
+          "note": "Docked toolbar reemplaza bottom app bar para diseños nuevos."
+        },
+        {
+          "category": "All other components",
+          "name": "Tooltips",
+          "purpose": "Label o mensaje breve contextual.",
+          "status": "m3_base",
+          "url": "https://m3.material.io/components/tooltips/overview",
+          "note": ""
+        }
+      ],
+      "replacements": [
+        {
+          "from": "Segmented buttons",
+          "to": "Connected button groups",
+          "status": "recommended_replacement"
+        },
+        {
+          "from": "Speed dial / stacked small FABs",
+          "to": "FAB menu",
+          "status": "recommended_replacement"
+        },
+        {
+          "from": "Bottom app bar",
+          "to": "Docked toolbar",
+          "status": "recommended_replacement"
+        }
+      ],
+      "platform_warning": "La clasificación describe las guías de diseño. La disponibilidad de implementación Expressive varía entre Jetpack Compose, Android Views, Flutter y Web."
+    }
+  },
+  "use_before_inventing": [
+    "Comparar propósito y anatomía con los 36 componentes.",
+    "Preferir configuración o composición antes que crear un componente nuevo.",
+    "Consultar Specs y Accessibility del componente más cercano para heredar dimensiones, estados y semántica."
+  ]
+}

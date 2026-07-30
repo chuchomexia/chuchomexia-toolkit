@@ -1,0 +1,274 @@
+{
+  "module_meta": {
+    "id": "generation-protocol",
+    "title": "Protocolo para generar componentes nuevos",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "derived_operational_protocol",
+    "depends_on": [
+      "01-agent-contract.json",
+      "02-philosophy-and-tactics.json",
+      "03-token-architecture.json",
+      "07-layout-adaptive.json",
+      "08-content-and-accessibility.json",
+      "09-components-catalog.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "protocol": {
+    "phase_1_intent": {
+      "questions": [
+        "¿Qué problema concreto resuelve?",
+        "¿Qué acción, información o selección representa?",
+        "¿Por qué un componente existente o una composición no basta?",
+        "¿Cuál es el momento de mayor valor o carga emocional?",
+        "¿Qué error debe prevenir?"
+      ],
+      "output": [
+        "problemStatement",
+        "userOutcome",
+        "nonGoals",
+        "existingComponentComparison"
+      ]
+    },
+    "phase_2_semantics_and_anatomy": {
+      "required": [
+        "semanticRole",
+        "accessibleNameSource",
+        "parts",
+        "slots",
+        "primaryAction",
+        "secondaryActions",
+        "valueOrSelectionModel",
+        "focusModel"
+      ],
+      "rule": "Cada parte visual debe tener una función, y cada función interactiva debe tener semántica y área de activación."
+    },
+    "phase_3_variants": {
+      "axes": [
+        "variant",
+        "size",
+        "colorStyle",
+        "shapeStyle",
+        "density",
+        "orientation",
+        "selectionMode",
+        "breakpointBehavior"
+      ],
+      "rule": "Crear solo ejes ortogonales. Evitar una variante separada si puede expresarse con un token o slot."
+    },
+    "phase_4_states": {
+      "minimum_matrix": [
+        "enabled",
+        "disabled",
+        "hovered",
+        "focused",
+        "pressed",
+        "selected",
+        "loading",
+        "error"
+      ],
+      "optional": [
+        "dragged",
+        "expanded",
+        "collapsed",
+        "indeterminate",
+        "success",
+        "empty"
+      ],
+      "rule": "Definir combinaciones relevantes, no solo estados aislados."
+    },
+    "phase_5_tokens": {
+      "required_domains": [
+        "color",
+        "typography",
+        "shape",
+        "spacing",
+        "size",
+        "elevation",
+        "motion",
+        "stateLayer",
+        "icon"
+      ],
+      "output": "Tabla de tokens agrupada por estado, elemento y propiedad. Mapear fuentes, colores y valores útiles del proyecto a roles Material; refinar o reemplazar tokens incoherentes y crear los que falten.",
+      "project_mapping_record": {
+        "existingToken": "token o variable real del proyecto",
+        "m3Role": "rol conceptual equivalente",
+        "decision": "preserve | map_to_material_role | refine | replace | create",
+        "rationale": "por qué conserva o mejora coherencia"
+      }
+    },
+    "phase_6_expressive_profile": {
+      "score_range": "0–3",
+      "axes": [
+        "shapeVariety",
+        "colorRichness",
+        "typographicEmphasis",
+        "containment",
+        "naturalMotion",
+        "contextualFlexibility",
+        "heroPotential"
+      ],
+      "rule": "Elegir de dos a cuatro ejes principales. Un componente no necesita puntuar alto en todos."
+    },
+    "phase_7_adaptation": {
+      "breakpoints": [
+        "compact",
+        "medium",
+        "expanded",
+        "large",
+        "extraLarge"
+      ],
+      "decisions": [
+        "reveal",
+        "divide",
+        "resize",
+        "reposition",
+        "swap"
+      ],
+      "rule": "Describir comportamiento, no solo ancho. Incluir orientación, multi-window y RTL."
+    },
+    "phase_8_motion": {
+      "required": [
+        "trigger",
+        "startState",
+        "endState",
+        "spatialToken",
+        "effectsToken",
+        "interruptBehavior",
+        "reducedMotionFallback"
+      ],
+      "rule": "Toda animación debe explicar causalidad, continuidad, estado o jerarquía."
+    },
+    "phase_9_content": {
+      "required": [
+        "labelRules",
+        "supportingText",
+        "errorCopy",
+        "loadingCopy",
+        "destructiveCopy",
+        "localization",
+        "truncationAndWrap"
+      ]
+    },
+    "phase_10_validation": {
+      "test_matrix": [
+        "light theme",
+        "dark theme",
+        "standard contrast",
+        "medium contrast",
+        "high contrast",
+        "reduced motion",
+        "keyboard only",
+        "screen reader",
+        "touch",
+        "mouse and hover",
+        "200% zoom or equivalent text scaling",
+        "LTR",
+        "RTL",
+        "all five breakpoints",
+        "long localized strings",
+        "loading, empty, error and offline states"
+      ]
+    },
+    "phase_0_project_discovery": {
+      "required_when_project_exists": true,
+      "inspect": [
+        "theme y tokens",
+        "variables CSS o configuración del framework",
+        "fuentes cargadas",
+        "radios y shape primitives",
+        "escala de spacing",
+        "breakpoints",
+        "motion",
+        "componentes comparables",
+        "patrones de estado y accesibilidad"
+      ],
+      "output": [
+        "projectBasics",
+        "materialGapAudit",
+        "preserveMapRefineReplaceCreateMatrix",
+        "technicalConstraints",
+        "usablePrimitives"
+      ],
+      "rule": "El proyecto aporta evidencia y restricciones, no la definición de diseño. Auditarlo contra Material y rescatar solo lo útil o intencional."
+    },
+    "phase_0_material_orientation": {
+      "required": true,
+      "read_or_identify": [
+        "filosofía y principios M3",
+        "tácticas expresivas relevantes",
+        "patrón de layout aplicable",
+        "componentes Material comparables",
+        "tokens y estados esperados",
+        "reglas de accesibilidad y contenido"
+      ],
+      "output": [
+        "materialPrinciplesForTask",
+        "referenceComponents",
+        "referenceLayoutPattern",
+        "expressiveAxes",
+        "nonNegotiableRules"
+      ],
+      "rule": "Material se estudia antes de juzgar la implementación del proyecto."
+    }
+  },
+  "required_output_schema": {
+    "component": {
+      "name": "string",
+      "oneLinePurpose": "string",
+      "problemStatement": "string",
+      "whyExistingComponentsAreInsufficient": "string",
+      "semanticRole": "string",
+      "anatomy": "array",
+      "slots": "array",
+      "variants": "array",
+      "sizes": "array",
+      "states": "array",
+      "behavior": "object",
+      "expressiveProfile": "object with seven 0–3 scores",
+      "tokenContract": "array of token records",
+      "motionContract": "array of transitions",
+      "adaptiveRules": "object keyed by breakpoint",
+      "accessibilityContract": "object",
+      "contentContract": "object",
+      "do": "array",
+      "dont": "array",
+      "testMatrix": "array",
+      "platformSupport": "object",
+      "openQuestions": "array"
+    },
+    "token_record": {
+      "name": "human-readable property name",
+      "tokenId": "app.comp.*",
+      "state": "string",
+      "element": "string",
+      "property": "string",
+      "aliases": "md.sys.* or app.sys.*",
+      "description": "string"
+    },
+    "transition_record": {
+      "trigger": "string",
+      "from": "string",
+      "to": "string",
+      "spatialToken": "md.sys.motion.spring.*.spatial or null",
+      "effectsToken": "md.sys.motion.spring.*.effects or null",
+      "morph": "boolean",
+      "interruptible": "boolean",
+      "reducedMotionFallback": "string"
+    }
+  },
+  "required_disclosure": {
+    "material_reference": "Qué principios, layout y componentes Material dirigen la solución.",
+    "project_basics": "Qué elementos básicos del proyecto se rescatan.",
+    "material_gap_audit": "Qué estaba desordenado o interpretaba Material incorrectamente.",
+    "decision_matrix": "Qué se preserva, mapea, refina, reemplaza o crea.",
+    "project_inventory": "Qué tokens, primitivas y convenciones del proyecto se encontraron.",
+    "reuse_and_mapping": "Qué se reutiliza y a qué rol M3 corresponde.",
+    "delta": "Qué cambia realmente en el proyecto y por qué.",
+    "official_inheritance": "Qué reglas o tokens se heredan de M3.",
+    "custom_decisions": "Qué decisiones son nuevas del producto.",
+    "approximations": "Qué valores o comportamientos son aproximaciones de plataforma.",
+    "unresolved_gaps": "Qué requiere consultar Specs, assets o implementación oficial."
+  }
+}

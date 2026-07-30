@@ -1,0 +1,138 @@
+{
+  "module_meta": {
+    "id": "color-typography",
+    "title": "Color y tipografía",
+    "version": "2026.07.29",
+    "language": "es",
+    "authority": "mixed",
+    "depends_on": [
+      "03-token-architecture.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "color": {
+    "purpose": "Expresar estilo y comunicar jerarquía, estado y marca mediante relaciones accesibles.",
+    "capabilities": [
+      "26 o más roles de color",
+      "tema claro y oscuro",
+      "baseline estático",
+      "color dinámico generado por usuario o contenido",
+      "contraste estándar, medio y alto",
+      "colores fixed que permanecen entre temas"
+    ],
+    "core_role_families": {
+      "accent": [
+        "primary",
+        "onPrimary",
+        "primaryContainer",
+        "onPrimaryContainer",
+        "secondary",
+        "onSecondary",
+        "secondaryContainer",
+        "onSecondaryContainer",
+        "tertiary",
+        "onTertiary",
+        "tertiaryContainer",
+        "onTertiaryContainer",
+        "error",
+        "onError",
+        "errorContainer",
+        "onErrorContainer"
+      ],
+      "surface": [
+        "surface",
+        "surfaceDim",
+        "surfaceBright",
+        "surfaceContainerLowest",
+        "surfaceContainerLow",
+        "surfaceContainer",
+        "surfaceContainerHigh",
+        "surfaceContainerHighest",
+        "onSurface",
+        "onSurfaceVariant"
+      ],
+      "structural": [
+        "outline",
+        "outlineVariant",
+        "inverseSurface",
+        "inverseOnSurface",
+        "inversePrimary",
+        "scrim",
+        "shadow",
+        "surfaceTint"
+      ],
+      "fixed": [
+        "primaryFixed",
+        "primaryFixedDim",
+        "onPrimaryFixed",
+        "onPrimaryFixedVariant",
+        "secondaryFixed",
+        "secondaryFixedDim",
+        "tertiaryFixed",
+        "tertiaryFixedDim"
+      ]
+    },
+    "expressive_rules": [
+      "Mapear la acción dominante a primary o a una combinación de alto contraste claramente intencional.",
+      "Usar secondary y tertiary para jerarquía complementaria, no para competir con primary.",
+      "Usar superficies tonales antes que sombras para separar regiones.",
+      "Permitir esquemas vibrantes sin romper contraste de texto, iconos, estados o foco.",
+      "Mantener colores semánticos críticos estables cuando el color dinámico pueda alterar su significado.",
+      "Probar light, dark, estándar, medio y alto contraste."
+    ],
+    "forbidden": [
+      "hex directo dentro del componente",
+      "color como única señal",
+      "roles on-* usados sobre un contenedor que no les corresponde",
+      "superficies con contraste insuficiente que borren agrupaciones"
+    ],
+    "extended_semantic_roles": {
+      "context": "M3 solo define 'error' como rol semantico critico oficial (error / onError / errorContainer / onErrorContainer). Warning y success NO existen como roles nativos del sistema.",
+      "when_needed": "Si el producto necesita advertencia o exito como estados visuales propios (saldo bajo, guardado correcto, verificacion pendiente), no los inventes como si fueran roles M3: constrúyelos como tokens de producto sobre la misma arquitectura de capas.",
+      "naming_pattern": "app.sys.color.warning / app.sys.color.onWarning / app.sys.color.warningContainer / app.sys.color.onWarningContainer (mismo patron de 4 tokens para success), usando el custom_prefix definido en 03-token-architecture.json.",
+      "construction_rule": "Genera el tono desde una paleta HCT propia para warning/success -- no reuses tertiary o secondary a ciegas solo porque el hue se parece. Exige el mismo contraste minimo AA que valida M3 para error/onError y errorContainer/onErrorContainer.",
+      "truth_label_required": "product_token",
+      "forbidden": "Presentar warning/success como si fueran roles M3 oficiales, omitir el prefijo de producto en el token, o documentarlos sin declarar explicitamente que son una extension no oficial."
+    }
+  },
+  "typography": {
+    "type_scale": {
+      "total_styles": 30,
+      "baseline_styles": 15,
+      "emphasized_styles": 15,
+      "roles": [
+        "display",
+        "headline",
+        "title",
+        "body",
+        "label"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "token_pattern": "md.sys.typescale.{role}-{size}[-emphasized]"
+    },
+    "variable_font_axes": [
+      "weight",
+      "width",
+      "grade",
+      "slant",
+      "optical size"
+    ],
+    "rules": [
+      "Usar body para lectura continua y label para controles.",
+      "Usar emphasized para priorizar, no como valor por defecto global.",
+      "Crear momentos editoriales con display o headline solo cuando el layout les dé espacio.",
+      "Mantener line-height, tracking, peso y tamaño como tokens independientes o compuestos.",
+      "Permitir escalado de texto sin truncar acciones esenciales ni romper la anatomía.",
+      "La tipografía y la forma deben compartir una cualidad visual coherente, como roundness o tensión."
+    ]
+  },
+  "fidelity_limits": [
+    "Este módulo define roles y comportamiento, no una paleta tonal completa generada desde una seed.",
+    "No contiene los valores exactos de los 30 estilos tipográficos por plataforma.",
+    "Para reproducción visual precisa se necesitan tokens exportados del Theme Builder o del Design Kit."
+  ]
+}

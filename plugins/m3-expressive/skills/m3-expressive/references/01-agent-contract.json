@@ -1,0 +1,77 @@
+{
+  "module_meta": {
+    "id": "agent-contract",
+    "title": "Contrato operativo del agente",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "mixed",
+    "depends_on": [
+      "00-manifest.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "agent_contract": {
+    "mission": "Entiende Material 3 como un sistema de diseño completo: filosofía, jerarquía, tokens, layout, componentes, interacción, accesibilidad y expresividad. Úsalo como referencia rectora para diseñar o corregir la interfaz del proyecto. Extrae del proyecto su contexto, marca, fuentes, colores y restricciones útiles, pero no heredes automáticamente decisiones visuales deficientes o implementaciones incorrectas de Material.",
+    "definition_of_native_m3_expressive": [
+      "El propósito y el comportamiento son comprensibles antes de aplicar estilo.",
+      "Todas las decisiones visuales se expresan mediante roles y tokens, no valores aislados.",
+      "La jerarquía se refuerza coordinando color, forma, tipografía, espacio y movimiento.",
+      "El componente funciona en cinco breakpoints y con distintos métodos de entrada.",
+      "Los estados se comunican con al menos dos señales cuando la accesibilidad lo requiere.",
+      "La expresión se concentra en momentos importantes y no compite con el contenido.",
+      "La forma o el movimiento responden a estado, acción o contexto y no prometen una semántica falsa.",
+      "El componente se integra con componentes M3 existentes y no duplica uno sin una razón documentada."
+    ],
+    "hard_constraints": [
+      "No llamar al sistema M4: Material 3 Expressive es una evolución de Material 3.",
+      "No asumir que el sistema visual existente es correcto solo porque ya está implementado.",
+      "No preservar componentes, layouts o tokens que contradigan Material, accesibilidad o la jerarquía requerida.",
+      "No imponer la estética baseline de Google; aplicar los principios Material usando la identidad válida del proyecto.",
+      "No usar valores de color directos dentro del componente; mapear siempre a roles de color.",
+      "No codificar tipografía, forma, elevación, espaciado o movimiento sin una capa de tokens.",
+      "No depender únicamente de color, forma, movimiento o posición para comunicar estado o significado.",
+      "No sacrificar legibilidad, contraste, tamaño de objetivo, foco, navegación por teclado o lector de pantalla por expresividad.",
+      "No añadir una forma abstracta si no mejora jerarquía, agrupación, estado, narrativa o deleite intencional.",
+      "No aplicar rebote a color u opacidad; el sobrepaso pertenece al movimiento espacial.",
+      "No llenar toda la interfaz de hero moments; reservar uno o dos por producto o flujo principal.",
+      "No diseñar para modelos de dispositivo específicos; diseñar para el espacio de ventana disponible y sus breakpoints.",
+      "No usar márgenes en hijos como mecanismo principal de espaciado; preferir padding y gap en el contenedor padre.",
+      "No usar title case en texto de interfaz; usar sentence case salvo términos de marca.",
+      "No inventar soporte de plataforma. Si una implementación expresiva no existe, declararla como personalizada o experimental."
+    ],
+    "preferred_reasoning_order": [
+      "principios Material relevantes",
+      "patrón de layout o componente Material aplicable",
+      "inventario básico del proyecto",
+      "auditoría de brechas entre proyecto y Material",
+      "necesidad del usuario",
+      "modelo mental y semántica",
+      "anatomía",
+      "estados y comportamiento",
+      "accesibilidad",
+      "adaptación por breakpoint",
+      "contenido",
+      "tokens",
+      "tácticas expresivas",
+      "motion",
+      "pruebas"
+    ],
+    "non_hallucination_rules": [
+      "Si falta un valor numérico exacto, no lo atribuyas a Material. Decláralo como token de producto o aproximación de plataforma.",
+      "No conviertas una recomendación derivada en una especificación oficial.",
+      "Si una decisión depende de la pestaña Specs o Accessibility de un componente, consulta esa ruta antes de entregar código de producción.",
+      "Si no existe soporte oficial en la plataforma objetivo, etiqueta el resultado como implementación custom compatible con M3.",
+      "La similitud visual no demuestra conformidad: valida semántica, estados, tokens y adaptación."
+    ],
+    "strict_prompt": "Diseña o corrige esta interfaz usando Material 3 Expressive como sistema rector. Comprende primero su filosofía, layout, componentes, tokens, estados, accesibilidad y tácticas expresivas. Después inspecciona el proyecto para rescatar marca, colores, fuentes, contenido y restricciones técnicas. No asumas que su implementación visual actual es correcta: audítala contra Material y clasifica qué preservar, mapear, refinar, reemplazar o crear. Implementa una solución coherente con Material y adaptada al proyecto, sin limitarte a copiar la estética baseline de Google.",
+    "material_led_project_workflow": [
+      "Identifica los principios, componentes y patrones Material relevantes para la tarea.",
+      "Extrae del proyecto colores, fuentes, marca, contenido, framework y restricciones técnicas.",
+      "Audita críticamente layout, tokens, componentes, estados y accesibilidad existentes.",
+      "Clasifica cada elemento como preserve, map, refine, replace o create.",
+      "Construye una solución Material coherente usando los elementos válidos del proyecto.",
+      "Corrige las malas interpretaciones de Material en lugar de perpetuarlas.",
+      "Valida jerarquía, adaptación, estados, expresividad y accesibilidad."
+    ]
+  }
+}

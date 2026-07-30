@@ -1,0 +1,278 @@
+{
+  "module_meta": {
+    "id": "sources",
+    "title": "Fuentes oficiales",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "official_links",
+    "depends_on": [],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "accessed_on": "2026-07-15",
+  "sources": [
+    {
+      "url": "https://m3.material.io/foundations",
+      "priority": "critical",
+      "topics": [
+        "mapa de foundations",
+        "accesibilidad",
+        "contenido",
+        "customización",
+        "tokens",
+        "estados",
+        "layout"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/layout/layout-overview/overview",
+      "priority": "critical",
+      "topics": [
+        "principios de layout",
+        "terminología",
+        "actualización mayo 2026",
+        "scaffold",
+        "breakpoints",
+        "RTL"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/layout/scaffold",
+      "priority": "high",
+      "topics": [
+        "bars",
+        "rails",
+        "panes",
+        "safety regions"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/layout/grids-spacing",
+      "priority": "high",
+      "topics": [
+        "grids",
+        "spacing",
+        "density",
+        "actualización mayo 2026"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/spacing/overview",
+      "priority": "high",
+      "topics": [
+        "escala 8dp",
+        "padding",
+        "gaps",
+        "márgenes",
+        "tokens"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/layout/breakpoints",
+      "priority": "critical",
+      "topics": [
+        "compact",
+        "medium",
+        "expanded",
+        "large",
+        "extra-large",
+        "adaptación"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/layout/canonical-examples",
+      "priority": "high",
+      "topics": [
+        "feed",
+        "list-detail",
+        "supporting pane",
+        "layering"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/content-design/overview",
+      "priority": "critical",
+      "topics": [
+        "claridad de UI text",
+        "AP Style",
+        "recursos de contenido"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/content-design/style-guide",
+      "priority": "high",
+      "topics": [
+        "consecuencias",
+        "escaneabilidad",
+        "sentence case",
+        "abreviaturas"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/content-design/global-writing",
+      "priority": "high",
+      "topics": [
+        "inclusión cultural",
+        "localización",
+        "traducción"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/components",
+      "priority": "critical",
+      "topics": [
+        "catálogo completo",
+        "descripciones de propósito"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/blog/building-with-m3-expressive",
+      "priority": "critical",
+      "topics": [
+        "filosofía Expressive",
+        "investigación",
+        "14 componentes",
+        "7 tácticas",
+        "hero moments"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/components/button-groups/overview",
+      "priority": "high",
+      "topics": [
+        "button groups",
+        "connected",
+        "shape morph",
+        "sizes"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/components/fab-menu/overview",
+      "priority": "high",
+      "topics": [
+        "FAB menu",
+        "2–6 acciones",
+        "color",
+        "reemplazo de speed dial"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/components/loading-indicator/overview",
+      "priority": "high",
+      "topics": [
+        "loading indicator",
+        "shape morph",
+        "under five seconds",
+        "pull-to-refresh"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/components/split-button/overview",
+      "priority": "high",
+      "topics": [
+        "split button",
+        "anatomía",
+        "sizes",
+        "color styles"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/components/toolbars/overview",
+      "priority": "high",
+      "topics": [
+        "docked toolbar",
+        "floating toolbar",
+        "vibrant color",
+        "reemplazo de bottom app bar"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/color/system/overview",
+      "priority": "critical",
+      "topics": [
+        "roles de color",
+        "dynamic color",
+        "contraste",
+        "superficies tonales"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/typography/overview",
+      "priority": "critical",
+      "topics": [
+        "30 estilos",
+        "emphasized",
+        "roles",
+        "variable fonts"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/shape/overview",
+      "priority": "critical",
+      "topics": [
+        "35 formas",
+        "corner radii",
+        "shape morph",
+        "tensión"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/motion/overview",
+      "priority": "critical",
+      "topics": [
+        "motion physics",
+        "springs",
+        "spatial",
+        "effects",
+        "speeds"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/elevation/overview",
+      "priority": "high",
+      "topics": [
+        "niveles",
+        "surface tones",
+        "shadows",
+        "hover"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/styles/icons/overview",
+      "priority": "high",
+      "topics": [
+        "Material Symbols",
+        "styles",
+        "variable axes"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/design-tokens/overview",
+      "priority": "critical",
+      "topics": [
+        "reference tokens",
+        "system tokens",
+        "component tokens",
+        "naming"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/interaction/states/overview",
+      "priority": "high",
+      "topics": [
+        "estados",
+        "state indicators",
+        "combinación de estados"
+      ]
+    },
+    {
+      "url": "https://m3.material.io/foundations/overview/principles",
+      "priority": "high",
+      "topics": [
+        "accesibilidad por defecto",
+        "investigación inclusiva",
+        "WCAG como punto de partida"
+      ]
+    }
+  ],
+  "citation_rule": "Toda afirmación numérica, de disponibilidad, de reemplazo o de comportamiento específico debe conservar una referencia a la ruta oficial correspondiente."
+}

@@ -1,7 +1,7 @@
 {
-  "name": "chuchomexia-tools",
+  "name": "chuchomexia-toolkit",
   "interface": {
-    "displayName": "chuchomexia tools"
+    "displayName": "chuchomexia toolkit"
   },
   "plugins": [
     {
@@ -15,6 +15,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "m3-expressive",
+      "source": {
+        "source": "local",
+        "path": "./plugins/m3-expressive"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
     }
   ]
 }

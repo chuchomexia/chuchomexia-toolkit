@@ -1,0 +1,194 @@
+{
+  "module_meta": {
+    "id": "manifest",
+    "title": "Manifest del paquete M3 Expressive",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "mixed",
+    "depends_on": [],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "package": {
+    "name": "m3-expressive-json",
+    "version": "2026.07.15",
+    "entrypoint": "00-manifest.json",
+    "index": "INDEX.md",
+    "legacy_monolith": "../material-3-expressive-agent-spec.es.json"
+  },
+  "honest_capability_statement": "Este paquete está optimizado para que un agente entienda la filosofía, el sistema, el layout, los componentes y la expresividad de Material 3, y use ese conocimiento como referencia rectora al trabajar dentro de un proyecto real.",
+  "reading_order": [
+    "01-agent-contract.json",
+    "02-philosophy-and-tactics.json",
+    "03-token-architecture.json",
+    "04-color-and-typography.json",
+    "05-shape-and-motion.json",
+    "06-spacing-elevation-icons.json",
+    "07-layout-adaptive.json",
+    "08-content-and-accessibility.json",
+    "09-components-catalog.json",
+    "10-generation-protocol.json",
+    "11-quality-gates-and-platforms.json",
+    "12-sources.json",
+    "13-known-gaps-and-roadmap.json"
+  ],
+  "files": {
+    "01-agent-contract.json": {
+      "purpose": "Reglas duras, orden de razonamiento y anti-alucinación."
+    },
+    "02-philosophy-and-tactics.json": {
+      "purpose": "Filosofía M3E, intensidad y siete tácticas."
+    },
+    "03-token-architecture.json": {
+      "purpose": "Capas, nombres, metadatos y etiquetas de verdad."
+    },
+    "04-color-and-typography.json": {
+      "purpose": "Roles de color y sistema tipográfico."
+    },
+    "05-shape-and-motion.json": {
+      "purpose": "Forma, morphing, springs y límites de fidelidad."
+    },
+    "06-spacing-elevation-icons.json": {
+      "purpose": "Espaciado, capas e iconografía."
+    },
+    "07-layout-adaptive.json": {
+      "purpose": "Scaffold, breakpoints y layouts canónicos."
+    },
+    "08-content-and-accessibility.json": {
+      "purpose": "UX writing, estados y accesibilidad."
+    },
+    "09-components-catalog.json": {
+      "purpose": "36 componentes y 14 actualizaciones expresivas."
+    },
+    "10-generation-protocol.json": {
+      "purpose": "Proceso y esquema de salida para componentes nuevos."
+    },
+    "11-quality-gates-and-platforms.json": {
+      "purpose": "Criterios de aceptación y soporte."
+    },
+    "12-sources.json": {
+      "purpose": "Rutas oficiales y política de citas."
+    },
+    "13-known-gaps-and-roadmap.json": {
+      "purpose": "Qué falta y cómo elevar la fidelidad."
+    },
+    "14-motion-shape-and-tools.md": {
+      "purpose": "Motion physics (springs), 35 formas, escala de 10 radios y herramientas (Theme Builder, Figma kit). Complementa 05; authority derived_from_secondary_sources, añadido 2026-07-21."
+    }
+  },
+  "loading_profiles": {
+    "minimum_orientation": [
+      "01-agent-contract.json",
+      "02-philosophy-and-tactics.json",
+      "13-known-gaps-and-roadmap.json"
+    ],
+    "create_component": [
+      "01-agent-contract.json",
+      "02-philosophy-and-tactics.json",
+      "03-token-architecture.json",
+      "04-color-and-typography.json",
+      "05-shape-and-motion.json",
+      "06-spacing-elevation-icons.json",
+      "07-layout-adaptive.json",
+      "08-content-and-accessibility.json",
+      "09-components-catalog.json",
+      "10-generation-protocol.json",
+      "11-quality-gates-and-platforms.json"
+    ],
+    "visual_system_only": [
+      "02-philosophy-and-tactics.json",
+      "03-token-architecture.json",
+      "04-color-and-typography.json",
+      "05-shape-and-motion.json",
+      "06-spacing-elevation-icons.json"
+    ],
+    "layout_only": [
+      "06-spacing-elevation-icons.json",
+      "07-layout-adaptive.json",
+      "08-content-and-accessibility.json"
+    ],
+    "audit_result": [
+      "01-agent-contract.json",
+      "08-content-and-accessibility.json",
+      "11-quality-gates-and-platforms.json",
+      "13-known-gaps-and-roadmap.json"
+    ],
+    "provenance": [
+      "12-sources.json"
+    ],
+    "adapt_existing_project": [
+      "01-agent-contract.json",
+      "02-philosophy-and-tactics.json",
+      "03-token-architecture.json",
+      "04-color-and-typography.json",
+      "05-shape-and-motion.json",
+      "06-spacing-elevation-icons.json",
+      "07-layout-adaptive.json",
+      "08-content-and-accessibility.json",
+      "09-components-catalog.json",
+      "10-generation-protocol.json",
+      "11-quality-gates-and-platforms.json"
+    ],
+    "implement_material_in_project": [
+      "01-agent-contract.json",
+      "02-philosophy-and-tactics.json",
+      "03-token-architecture.json",
+      "04-color-and-typography.json",
+      "05-shape-and-motion.json",
+      "06-spacing-elevation-icons.json",
+      "07-layout-adaptive.json",
+      "08-content-and-accessibility.json",
+      "09-components-catalog.json",
+      "10-generation-protocol.json",
+      "11-quality-gates-and-platforms.json"
+    ]
+  },
+  "authority_model": {
+    "official_summary": "Paráfrasis comprobada de documentación oficial.",
+    "derived_operational_protocol": "Síntesis creada para que un agente trabaje de forma consistente.",
+    "mixed": "Contiene ambos tipos; revisar module_meta y fidelity_limits.",
+    "critical_self_assessment": "Limitaciones y roadmap; no es guía visual."
+  },
+  "global_rule": "Cuando dos fuentes entren en conflicto: accesibilidad y semántica > intención del usuario > principios y arquitectura Material 3 > identidad básica y restricciones reales del proyecto > implementación existente > protocolo derivado > preferencia estética.",
+  "material_guided_project_mode": {
+    "default_when_project_exists": true,
+    "principle": "Material define la referencia de diseño: filosofía, estructura, layout, componentes, estados, accesibilidad y expresividad. El proyecto aporta contexto técnico, contenido y elementos básicos de identidad que deben evaluarse críticamente.",
+    "project_is_evidence_not_authority": true,
+    "inspect_project_for": [
+      "marca y contenido",
+      "fuentes",
+      "colores",
+      "framework y arquitectura técnica",
+      "restricciones reales",
+      "componentes y tokens existentes que puedan rescatarse"
+    ],
+    "mapping_rule": "Mapear lo rescatable del proyecto a roles M3. Corregir, reorganizar o reemplazar aquello que contradiga los principios Material o produzca una experiencia incoherente.",
+    "preserve_by_default": [
+      "identidad de marca",
+      "fuentes intencionales y legibles",
+      "colores de marca utilizables dentro de roles accesibles",
+      "contenido y dominio del producto",
+      "restricciones técnicas reales",
+      "comportamiento funcional correcto"
+    ],
+    "audit_do_not_preserve_blindly": [
+      "jerarquía visual existente",
+      "layout y espaciado inconsistentes",
+      "componentes que imitan Material incorrectamente",
+      "tokens redundantes o sin semántica",
+      "radios arbitrarios",
+      "estados incompletos",
+      "patrones inaccesibles",
+      "arquitectura visual accidental"
+    ],
+    "decision_classes": [
+      "preserve",
+      "map_to_material_role",
+      "refine",
+      "replace",
+      "create"
+    ]
+  },
+  "human_cheatsheets": [
+    "COMPONENTS-CHEATSHEET.md"
+  ]
+}

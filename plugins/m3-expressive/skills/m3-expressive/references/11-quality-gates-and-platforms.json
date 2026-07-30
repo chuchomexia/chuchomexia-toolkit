@@ -1,0 +1,67 @@
+{
+  "module_meta": {
+    "id": "quality-platforms",
+    "title": "Quality gates y soporte de plataformas",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "mixed",
+    "depends_on": [
+      "10-generation-protocol.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "quality_gates": {
+    "scoring": {
+      "purpose_and_semantics": 15,
+      "accessibility": 20,
+      "token_integrity": 15,
+      "state_completeness": 10,
+      "adaptive_layout": 10,
+      "content_quality": 10,
+      "expressive_coherence": 15,
+      "implementation_feasibility": 5
+    },
+    "pass_score": 85,
+    "automatic_failures": [
+      "No tiene rol o nombre accesible.",
+      "Depende solo de color o motion para comunicar estado.",
+      "No tiene foco visible o no funciona por teclado.",
+      "Usa valores visuales hardcoded dentro del componente.",
+      "Falla en dark o high contrast.",
+      "No tiene reduced-motion fallback.",
+      "Duplica un componente M3 sin justificación.",
+      "La expresión reduce claridad, legibilidad o prioridad de una acción esencial."
+    ],
+    "final_review_questions": [
+      "¿Parece pertenecer a M3 incluso sin el hero moment?",
+      "¿La expresión mejora comprensión o solo añade novedad?",
+      "¿Hay una sola acción dominante y se reconoce rápidamente?",
+      "¿Forma, color, tipo, espacio y motion cuentan la misma historia?",
+      "¿El componente sigue funcionando cuando motion se reduce y color dinámico cambia?",
+      "¿Se integra en scaffold, layouts canónicos y los cinco breakpoints?",
+      "¿Puede un equipo implementarlo sin adivinar tokens, estados o comportamiento?"
+    ]
+  },
+  "platform_notes": {
+    "general": "La disponibilidad expresiva varía por plataforma. La guía visual puede aplicarse a web, pero algunas implementaciones oficiales estaban disponibles principalmente en Jetpack Compose y Android Views al momento de la investigación.",
+    "web": [
+      "Conservar la arquitectura de tokens aunque no exista un componente oficial expresivo.",
+      "Usar springs compatibles o aproximaciones detrás de tokens; documentar valores no oficiales.",
+      "Implementar semántica HTML/ARIA nativa antes de capas visuales.",
+      "No presentar una implementación custom como componente oficial de Material Web."
+    ],
+    "compose": "El sistema de motion physics y varios componentes expresivos tienen soporte oficial o referencias oficiales en Jetpack Compose.",
+    "android_views": "El soporte es parcial y depende del componente; revisar la tabla de disponibilidad de cada ruta.",
+    "flutter": "La disponibilidad expresiva no es uniforme; verificar por componente y mantener fallback M3 estándar."
+  },
+  "visual_similarity_gate": {
+    "warning": "La coherencia conceptual no garantiza parecido visual.",
+    "required_evidence_for_high_fidelity": [
+      "comparación con capturas o frames oficiales relevantes",
+      "tokens numéricos de la plataforma objetivo",
+      "geometrías o assets de forma",
+      "estados interactivos observados",
+      "pruebas en los breakpoints objetivo"
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "module_meta": {
+    "id": "content-accessibility",
+    "title": "Contenido y accesibilidad",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "official_summary_with_operational_minimums",
+    "depends_on": [
+      "01-agent-contract.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "content_design": {
+    "goal": "El texto de interfaz debe ser claro para cualquier persona y optimizado para lectura, acción, accesibilidad y localización.",
+    "baseline": [
+      "Usar AP Style salvo indicación específica del producto.",
+      "Usar sentence case en títulos, headings, labels, menús, navegación, app bars y botones.",
+      "Explicar consecuencias de forma neutral y directa, incluida la posibilidad de deshacer.",
+      "Crear títulos y headings específicos que faciliten el escaneo.",
+      "Evitar abreviaturas si hay espacio para escribir la palabra completa.",
+      "Optimizar para culturas, idiomas y traducción; evitar modismos, metáforas y referencias locales innecesarias.",
+      "El label debe describir el resultado de la acción, no el gesto ni una frase vaga.",
+      "Evitar preguntas alarmistas, manipulación y confirmaciones innecesarias."
+    ],
+    "component_content_contract": {
+      "required": [
+        "accessibleName",
+        "visibleLabelPolicy",
+        "supportingTextPolicy",
+        "errorMessagePattern",
+        "emptyStatePattern",
+        "loadingAnnouncement",
+        "successAnnouncement",
+        "destructiveConsequenceCopy",
+        "localizationNotes"
+      ],
+      "writing_tests": [
+        "¿El label describe exactamente qué ocurrirá?",
+        "¿La opción más segura y la destructiva son fáciles de diferenciar?",
+        "¿El texto sigue funcionando al expandirse 30–50%?",
+        "¿Se puede traducir sin depender del orden fijo de palabras?",
+        "¿El componente conserva sentido sin iconos?"
+      ]
+    }
+  },
+  "accessibility": {
+    "principle": "Accesibilidad por defecto. WCAG es un punto de partida, no el techo de calidad.",
+    "human_needs": [
+      "baja visión",
+      "ceguera",
+      "discapacidad auditiva",
+      "discapacidad cognitiva",
+      "discapacidad motriz",
+      "discapacidades situacionales",
+      "preferencias individuales cambiantes"
+    ],
+    "required_states": [
+      "enabled",
+      "disabled",
+      "hovered",
+      "focused",
+      "pressed",
+      "dragged",
+      "selected",
+      "loading",
+      "error",
+      "success"
+    ],
+    "state_rules": [
+      "Aplicar estados de forma consistente entre componentes.",
+      "Permitir combinación de estados, por ejemplo selected + hover.",
+      "Usar al menos dos indicadores visuales para estados cuando una sola señal sea insuficiente.",
+      "El foco debe ser visible en todos los esquemas de color y formas.",
+      "Disabled no sustituye una explicación; si la razón no es obvia, comunicarla."
+    ],
+    "input_and_output": [
+      "teclado",
+      "touch",
+      "mouse",
+      "stylus",
+      "voz",
+      "switch access",
+      "screen reader"
+    ],
+    "minimums": {
+      "touch_target_dp": 48,
+      "text_contrast": "Cumplir o superar WCAG para tamaño y peso del texto.",
+      "non_text_contrast": "Mantener contraste suficiente en controles, foco y estados.",
+      "text_scaling": "La información y acciones esenciales deben sobrevivir a escalado de texto y reflow.",
+      "reduced_motion": "Eliminar rebote y desplazamiento no esencial; conservar feedback inmediato.",
+      "rtl": "Invertir leading/trailing, orden espacial y motion direccional cuando corresponda."
+    },
+    "preflight": [
+      "rol semántico correcto",
+      "nombre y descripción accesibles",
+      "orden de foco lógico",
+      "activación por teclado",
+      "anuncios de cambio de estado",
+      "hit target suficiente",
+      "contraste en light/dark/medium/high",
+      "reduced motion",
+      "RTL",
+      "zoom y texto ampliado"
+    ]
+  },
+  "fidelity_rule": "Un componente visualmente parecido a M3 que falla semántica, foco, contraste, escalado de texto o reduced motion no es un resultado aceptable."
+}

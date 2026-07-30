@@ -1,0 +1,149 @@
+{
+  "module_meta": {
+    "id": "layout-adaptive",
+    "title": "Layout adaptativo",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "official_summary",
+    "depends_on": [
+      "02-philosophy-and-tactics.json",
+      "06-spacing-elevation-icons.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "layout": {
+    "core_principles": [
+      "Organizar elementos, comunicar jerarquía y llamar la atención hacia acciones clave.",
+      "Aplicar disposición, tamaño y espaciado consistentes.",
+      "Diseñar para el espacio de ventana disponible, orientación, preferencias y estado.",
+      "Soportar LTR y RTL.",
+      "Partir de scaffold y de un layout canónico antes de crear uno personalizado."
+    ],
+    "scaffold": {
+      "definition": "Estructura base para ensamblar componentes clave en un layout adaptativo.",
+      "parts": {
+        "bars": "Enmarcan la página y suelen alojar app bar o navegación inferior.",
+        "rails": "Espacio perimetral alrededor de panes para navegación, toolbars y controles de pane.",
+        "panes": "Contenedores de contenido primario o secundario; pueden ser fixed, flexible, floating o semi-permanent.",
+        "safetyRegions": "Zonas reservadas para UI del sistema, como status bar o gesture bar.",
+        "rulers": "Líneas globales de alineación que organizan bloques.",
+        "foldsAndSpacers": "Áreas flexibles, bisagras o separaciones relevantes en foldables."
+      }
+    },
+    "breakpoints": [
+      {
+        "name": "compact",
+        "min_width_dp": 0,
+        "max_width_dp": 599,
+        "recommended_panes": "1",
+        "navigation": [
+          "navigation bar",
+          "modal expanded navigation rail"
+        ],
+        "communication": [
+          "simple dialog",
+          "full-screen dialog"
+        ],
+        "secondary_action_surface": "bottom sheet"
+      },
+      {
+        "name": "medium",
+        "min_width_dp": 600,
+        "max_width_dp": 839,
+        "recommended_panes": "1; 2 solo con baja densidad y acciones claras",
+        "navigation": [
+          "navigation bar",
+          "modal expanded navigation rail"
+        ],
+        "communication": [
+          "simple dialog"
+        ],
+        "secondary_action_surface": "menu"
+      },
+      {
+        "name": "expanded",
+        "min_width_dp": 840,
+        "max_width_dp": 1199,
+        "recommended_panes": "2; 1 si la experiencia debe ser inmersiva",
+        "navigation": [
+          "modal expanded navigation rail",
+          "standard expanded navigation rail"
+        ],
+        "communication": [
+          "simple dialog"
+        ],
+        "secondary_action_surface": "menu"
+      },
+      {
+        "name": "large",
+        "min_width_dp": 1200,
+        "max_width_dp": 1599,
+        "recommended_panes": "2",
+        "navigation": [
+          "modal expanded navigation rail",
+          "standard expanded navigation rail"
+        ],
+        "communication": [
+          "simple dialog"
+        ],
+        "secondary_action_surface": "menu"
+      },
+      {
+        "name": "extraLarge",
+        "min_width_dp": 1600,
+        "max_width_dp": null,
+        "recommended_panes": "1 a 3; considerar 3 cuando la relación entre contenidos lo justifique",
+        "navigation": [
+          "modal expanded navigation rail",
+          "standard expanded navigation rail"
+        ],
+        "communication": [
+          "simple dialog"
+        ],
+        "secondary_action_surface": "menu"
+      }
+    ],
+    "adaptation_operations": [
+      {
+        "operation": "reveal",
+        "question": "¿Qué contenido o control oculto en espacios pequeños debe hacerse visible?"
+      },
+      {
+        "operation": "divide",
+        "question": "¿Debe una vista convertirse en dos o tres panes?"
+      },
+      {
+        "operation": "resize",
+        "question": "¿Qué panes, tarjetas, feeds, listas o imágenes deben cambiar de escala?"
+      },
+      {
+        "operation": "reposition",
+        "question": "¿Qué elemento debe moverse para mejorar alcance, lectura o jerarquía?"
+      },
+      {
+        "operation": "swap",
+        "question": "¿Qué componente debe sustituirse por otro equivalente más apropiado?"
+      }
+    ],
+    "canonical_examples": {
+      "feed": "Grid configurable de cards o elementos para revisar gran cantidad de contenido.",
+      "listDetail": "Lista explorable junto al detalle del elemento seleccionado, normalmente en dos panes.",
+      "supportingPane": "Área primaria de alrededor de dos tercios y pane secundario con contenido de apoyo.",
+      "custom_layering": "Pane elevado sobre el contenido para una tarea focalizada, como carrito, comentarios o creación de evento."
+    },
+    "expressive_layout_rules": [
+      "Usar diferencia de tamaño, espacio y forma para hacer inequívoco el foco principal.",
+      "Dar amplitud al contenido prioritario y usar superficies más brillantes o contrastadas.",
+      "Mantener regiones secundarias calmadas para sostener un hero moment.",
+      "No convertir todo en una cuadrícula uniforme; permitir asimetría controlada si mejora la narrativa.",
+      "No anidar tarjetas como sustituto de una jerarquía de layout.",
+      "Probar rotación, multi-window, foldables, desktop y ultra-wide."
+    ]
+  },
+  "validation_focus": [
+    "No diseñar por modelo de dispositivo.",
+    "Verificar los cinco breakpoints.",
+    "Probar reveal, divide, resize, reposition y swap.",
+    "Probar orientación, multi-window, foldables, ultra-wide y RTL."
+  ]
+}

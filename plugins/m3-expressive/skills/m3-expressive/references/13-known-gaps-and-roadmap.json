@@ -1,0 +1,92 @@
+{
+  "module_meta": {
+    "id": "known-gaps-roadmap",
+    "title": "Huecos conocidos y hoja de ruta",
+    "version": "2026.07.29",
+    "language": "es",
+    "authority": "critical_self_assessment",
+    "depends_on": [
+      "12-sources.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "current_capability_estimate": {
+    "conceptual_m3e_alignment": "high",
+    "novel_component_process": "high",
+    "visual_style_similarity_without_references": "medium",
+    "pixel_or_motion_fidelity": "low_to_medium",
+    "production_spec_completeness": "medium",
+    "honest_summary": "Adecuado para enseñar a un agente la filosofía, estructura y expresividad de Material 3 y guiar una implementación crítica dentro de un proyecto real. No exige fidelidad exacta, pero sí coherencia con los principios Material.",
+    "fit_for_project_adaptation": "high",
+    "fit_for_material_guided_project_work": "high"
+  },
+  "gaps": [
+    {
+      "priority": "optional_fidelity",
+      "gap": "Geometrías exactas de las 35 formas",
+      "impact": "El agente improvisará siluetas y morphing.",
+      "improvement": "Añadir SVG/path data oficial o referencias de asset por nombre."
+    },
+    {
+      "priority": "optional_fidelity",
+      "gap": "Constantes de springs por esquema, velocidad, plataforma y dispositivo",
+      "impact": "El movimiento puede sentirse genérico o excesivo.",
+      "improvement": "Extraer las tablas de Motion Specs y mapearlas a CSS, Compose, Android Views y Flutter. Mitigacion parcial 2026-07-29: 05-shape-and-motion.json ahora incluye 'web_css_approximation' con guia de cubic-bezier para web, etiquetada como platform_approximation. Sigue faltando la tabla oficial de constantes para Compose/Views/Flutter."
+    },
+    {
+      "priority": "optional_precision",
+      "gap": "Tokens exactos de anatomía y estados por componente",
+      "impact": "Tamaños, padding, state layers y formas pueden desviarse.",
+      "improvement": "Crear un JSON por familia desde cada pestaña Specs y Accessibility."
+    },
+    {
+      "priority": "recommended_if_visual_matching_matters",
+      "gap": "Referencias visuales estructuradas",
+      "impact": "El agente entiende reglas, pero no tiene una meta perceptual concreta.",
+      "improvement": "Añadir capturas oficiales por táctica, componente y breakpoint con anotaciones de qué observar."
+    },
+    {
+      "priority": "P1",
+      "gap": "Paletas tonales y esquemas dinámicos completos",
+      "impact": "El color puede ser correcto semánticamente pero poco parecido.",
+      "improvement": "Incluir exports del Material Theme Builder para seeds y niveles de contraste."
+    },
+    {
+      "priority": "P1",
+      "gap": "Type scale numérico y variable axes por plataforma",
+      "impact": "Jerarquía correcta, métricas tipográficas imprecisas.",
+      "improvement": "Añadir tamaño, line-height, tracking, weight, grade y optical size de cada token. Sigue abierto: no hay valores numericos por plataforma; usar Theme Builder / Design Kit como fuente exacta."
+    },
+    {
+      "priority": "P1",
+      "gap": "Ejemplos de composición positiva y negativa",
+      "impact": "El agente puede sobreusar cards, formas y hero moments.",
+      "improvement": "Añadir pares do/don't y un rubric visual con ejemplos."
+    },
+    {
+      "priority": "P1",
+      "gap": "Disponibilidad de plataforma versionada",
+      "impact": "El soporte cambia y puede quedar obsoleto.",
+      "improvement": "Registrar versión de librería, símbolo/API y fecha de verificación."
+    },
+    {
+      "priority": "P2",
+      "gap": "Suite automática de validación",
+      "impact": "Los quality gates dependen de revisión manual.",
+      "improvement": "Añadir JSON Schema, tests de contraste, lint de tokens, snapshots y pruebas de interacción."
+    },
+    {
+      "priority": "resolved_2026_07_29",
+      "gap": "Roles semanticos mas alla de error (warning, success)",
+      "impact": "Sin guia explicita, un agente podia inventar warning/success sin declararlos como no oficiales, o confundirlos con roles M3.",
+      "improvement": "Agregado en 04-color-and-typography.json como 'extended_semantic_roles': naming pattern con prefijo de producto, regla de contraste equivalente a error, y truth_label obligatorio 'product_token'."
+    }
+  ],
+  "recommended_next_step": "Probar el paquete sobre un componente o pantalla del proyecto que actualmente use Material de forma inconsistente. Evaluar si el agente identifica los problemas, conserva solo marca y fundamentos útiles, y reconstruye la solución desde los principios Material.",
+  "goal_alignment": {
+    "declared_goal": "Dar a agentes de AI un insumo claro para entender qué es Material, qué significa como filosofía y sistema, y cómo implementar sus principios dentro del proyecto en el que trabajan.",
+    "assessment": "El paquete cumple este objetivo cuando Material se usa como referencia rectora y el proyecto se trata como contexto a auditar, no como autoridad de diseño.",
+    "main_risk": "Que el agente preserve una implementación desordenada por confundir adaptación con obediencia al estado actual.",
+    "mitigation": "Cargar implement_material_in_project, estudiar Material primero y exigir una matriz preserve/map/refine/replace/create."
+  }
+}

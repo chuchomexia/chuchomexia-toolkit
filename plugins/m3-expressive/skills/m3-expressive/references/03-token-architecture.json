@@ -1,0 +1,67 @@
+{
+  "module_meta": {
+    "id": "token-architecture",
+    "title": "Arquitectura de tokens",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "official_summary_with_custom_namespace_recommendation",
+    "depends_on": [
+      "01-agent-contract.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "tokens": {
+    "principle": "Los tokens son decisiones reutilizables y con nombre que conectan diseño, herramientas y código. Un cambio de valor no debe cambiar el significado del token.",
+    "classes": {
+      "reference": "Valores disponibles: paletas, fuentes, medidas y otros primitivos.",
+      "system": "Roles que definen el carácter del sistema: color, tipografía, elevación, forma, espaciado y motion.",
+      "component": "Propiedades aplicadas a elementos y estados de un componente."
+    },
+    "naming": {
+      "pattern": "md.{class}.{domain}.{role}.{element?}.{state?}.{property?}",
+      "official_examples": [
+        "md.ref.palette.secondary90",
+        "md.comp.fab.primary.container.color",
+        "md.sys.motion.spring.fast.spatial"
+      ],
+      "custom_prefix": "app",
+      "custom_component_pattern": "app.comp.{component}.{variant}.{element}.{state}.{property}"
+    },
+    "component_token_matrix": {
+      "group_order": [
+        "state",
+        "element",
+        "property"
+      ],
+      "required_columns": [
+        "name",
+        "token_id",
+        "description",
+        "context_or_value"
+      ]
+    },
+    "rules": [
+      "Usar tokens en lugar de valores hardcoded.",
+      "Los component tokens deben apuntar a system tokens; estos pueden apuntar a reference tokens.",
+      "Separar el nombre semántico del valor final.",
+      "Definir contextos para light, dark, contraste y breakpoint cuando corresponda.",
+      "Documentar cada token nuevo y evitar tokens casi duplicados."
+    ]
+  },
+  "truth_labels": {
+    "official_summary": "Paráfrasis de documentación oficial.",
+    "derived_rule": "Regla operativa deducida de varias guías.",
+    "product_token": "Decisión propia del producto; no oficial.",
+    "platform_approximation": "Valor necesario para implementar en una plataforma sin equivalencia oficial."
+  },
+  "required_token_metadata": [
+    "id",
+    "domain",
+    "role",
+    "state",
+    "element",
+    "value_or_alias",
+    "truth_label",
+    "source_ref_or_rationale"
+  ]
+}

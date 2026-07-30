@@ -1,0 +1,9 @@
+{
+  "name": "m3-expressive",
+  "description": "Diseña o corrige cualquier interfaz usando Material 3 Expressive de Google como filosofía rectora: color, tipografía, forma, motion, layout adaptativo y accesibilidad.",
+  "author": {
+    "name": "chuchomexia"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["design", "ui", "material-design", "m3", "design-system", "css", "frontend"]
+}

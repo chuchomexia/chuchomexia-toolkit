@@ -1,0 +1,89 @@
+{
+  "module_meta": {
+    "id": "spacing-elevation-icons",
+    "title": "Espaciado, elevación e iconografía",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "mixed",
+    "depends_on": [
+      "03-token-architecture.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "spacing": {
+    "base_unit_dp": 8,
+    "base_token": "space100",
+    "recommended_values_dp": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      12,
+      16,
+      24,
+      32,
+      40,
+      48,
+      56,
+      64,
+      72
+    ],
+    "categories": {
+      "padding": "Espacio dentro de un elemento.",
+      "gap": "Espacio entre elementos de un grid o contenedor.",
+      "margin": "Espacio fuera de un elemento."
+    },
+    "directions": [
+      "vertical",
+      "top",
+      "bottom",
+      "horizontal",
+      "leading",
+      "trailing"
+    ],
+    "rules": [
+      "Aplicar tokens a padding, gaps y márgenes.",
+      "Preferir padding y gap del padre antes que margen de hijos.",
+      "Adaptar espaciado a tamaño del componente, breakpoint, densidad y forma.",
+      "Nombrar gaps complejos por los elementos que separan, por ejemplo iconLabelGap.",
+      "Leading y trailing deben invertir correctamente en RTL.",
+      "Más espacio debe reforzar jerarquía y respiración, no simplemente agrandar todo."
+    ]
+  },
+  "elevation": {
+    "principles": [
+      "Toda superficie tiene una relación de elevación.",
+      "Usar pocos niveles y respetar los valores de reposo de componentes M3.",
+      "Representar elevación con color tonal o sombra según contexto.",
+      "Preferir superficie tonal; usar sombra cuando haga falta protección contra el fondo o una señal de interacción.",
+      "Un cambio de elevación por hover o interacción debe ser consistente entre componentes similares."
+    ],
+    "expressive_bias": "Separación tonal limpia, capas claras y sombras contenidas; evitar la estética de tarjetas flotantes indiscriminadas."
+  },
+  "icons": {
+    "system": "Material Symbols",
+    "styles": [
+      "outlined",
+      "rounded",
+      "sharp"
+    ],
+    "variable_axes": [
+      "weight",
+      "fill",
+      "opticalSize",
+      "grade"
+    ],
+    "rules": [
+      "Alinear estilo y roundness con tipografía y forma del componente.",
+      "Usar fill, peso o grade como señal adicional de estado cuando sea comprensible.",
+      "No sustituir un label necesario por un icono ambiguo.",
+      "Proporcionar nombre accesible cuando el icono es interactivo."
+    ]
+  },
+  "fidelity_limits": [
+    "La lista de espaciados es una escala recomendada, no una tabla exhaustiva de component specs.",
+    "Las sombras concretas dependen de plataforma.",
+    "Los iconos requieren Material Symbols o assets equivalentes; este paquete no incluye glifos."
+  ]
+}

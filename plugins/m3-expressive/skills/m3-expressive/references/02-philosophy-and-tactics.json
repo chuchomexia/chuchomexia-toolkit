@@ -1,0 +1,171 @@
+{
+  "module_meta": {
+    "id": "philosophy-tactics",
+    "title": "Filosofía y tácticas expresivas",
+    "version": "2026.07.15",
+    "language": "es",
+    "authority": "official_summary_with_derived_intensity_model",
+    "depends_on": [
+      "01-agent-contract.json"
+    ],
+    "interpretation_rule": "Las reglas oficiales resumidas tienen prioridad. Las recomendaciones derivadas completan huecos, pero nunca deben presentarse como valores oficiales."
+  },
+  "philosophy": {
+    "material_3": {
+      "description": "Sistema adaptable de guías, componentes y herramientas que conecta diseño e implementación mediante decisiones reutilizables.",
+      "foundations": [
+        "accesibilidad por defecto",
+        "contenido comprensible",
+        "personalización de marca",
+        "tokens como fuente de verdad",
+        "estados consistentes",
+        "layout adaptativo",
+        "colaboración diseño-desarrollo"
+      ]
+    },
+    "material_3_expressive": {
+      "relationship_to_m3": "Conjunto de nuevas funciones, componentes actualizados y tácticas dentro de M3 para crear experiencias con mayor impacto emocional, mejor jerarquía y mayor facilidad de uso.",
+      "primary_outcomes": [
+        "más atractivo",
+        "más fácil de usar",
+        "más deseable",
+        "más personal",
+        "más claro en sus acciones clave"
+      ],
+      "research_summary": {
+        "studies": 46,
+        "participants_over": 18000,
+        "reported_findings": [
+          "La preferencia por diseños expresivos aparece en personas de distintas edades.",
+          "Los diseños expresivos puntuaron mejor en juego, energía, creatividad y amabilidad.",
+          "Los participantes encontraron elementos clave de interfaz hasta cuatro veces más rápido en ciertas pantallas expresivas.",
+          "La expresión útil no es solo estética: debe reforzar jerarquía, utilidad y conexión emocional."
+        ]
+      }
+    },
+    "expression_intensity_model": {
+      "levels": {
+        "0_functional": "M3 estándar; claridad y eficiencia dominan.",
+        "1_warm": "Una o dos señales expresivas discretas; apropiado para utilidades.",
+        "2_expressive": "Variación coordinada de forma, color, tipo y motion en acciones clave.",
+        "3_hero": "Composición editorial y movimiento distintivo para un momento crítico y breve."
+      },
+      "default": 2,
+      "rule": "La intensidad máxima debe reservarse para la información o interacción más importante. El resto de la pantalla debe sostenerla con menor contraste expresivo."
+    }
+  },
+  "expressive_tactics": [
+    {
+      "id": "shape_variety",
+      "name": "Usar variedad de formas",
+      "goal": "Crear tensión o cohesión, agrupar y dirigir la atención.",
+      "apply": [
+        "combinar formas redondas y cuadradas de forma intencional",
+        "romper el patrón de forma circundante para enfatizar un elemento",
+        "usar siluetas abstractas principalmente en elementos decorativos o hero"
+      ],
+      "avoid": [
+        "hacer más pequeña una acción esencial y reducir su importancia percibida",
+        "asignar a una forma abstracta un significado universal inexistente",
+        "usar demasiadas siluetas distintas en una misma región"
+      ]
+    },
+    {
+      "id": "nuanced_color",
+      "name": "Aplicar color rico y matizado",
+      "goal": "Clarificar jerarquía y priorizar acciones mediante roles primary, secondary, tertiary y superficies tonales.",
+      "apply": [
+        "usar contraste entre roles para destacar el takeaway principal",
+        "usar superficies tonales para agrupar sin recurrir siempre a sombras",
+        "permitir color dinámico y niveles de contraste"
+      ],
+      "avoid": [
+        "usar tonos similares que hagan que controles y contenido se mezclen",
+        "usar colores de marca directos sin un rol semántico",
+        "depender del color como única señal de estado"
+      ]
+    },
+    {
+      "id": "attention_typography",
+      "name": "Guiar atención con tipografía",
+      "goal": "Crear jerarquía clara y momentos editoriales.",
+      "apply": [
+        "usar estilos emphasized en titulares, datos o acciones importantes",
+        "combinar peso, tamaño, color y espaciado con propósito",
+        "mantener contraste claro entre display, headline, title, body y label"
+      ],
+      "avoid": [
+        "usar emphasized para todo",
+        "tratar texto de cuerpo como decoración",
+        "reducir legibilidad por una composición editorial"
+      ]
+    },
+    {
+      "id": "containment",
+      "name": "Contener contenido para enfatizar",
+      "goal": "Hacer visibles las relaciones y dar prominencia a tareas o datos importantes.",
+      "apply": [
+        "agrupar contenido relacionado en un contenedor lógico",
+        "dar más espacio y una superficie más brillante a lo prioritario",
+        "usar tamaño, ritmo, proximidad y similitud como señales de agrupación"
+      ],
+      "avoid": [
+        "fragmentar cada dato en una tarjeta",
+        "crear contenedores anidados sin una nueva relación semántica",
+        "hacer que todas las agrupaciones tengan la misma prominencia"
+      ]
+    },
+    {
+      "id": "natural_motion",
+      "name": "Añadir movimiento fluido y natural",
+      "goal": "Explicar cambio, dar continuidad y hacer que la interacción se sienta viva.",
+      "apply": [
+        "usar springs espaciales para posición, escala, rotación, tamaño y forma",
+        "usar springs de efectos para color y opacidad",
+        "usar morph de forma para estados, progreso o cambios del entorno"
+      ],
+      "avoid": [
+        "animación decorativa permanente",
+        "rebote en color u opacidad",
+        "movimiento que retrasa tareas frecuentes",
+        "ignorar prefers-reduced-motion"
+      ]
+    },
+    {
+      "id": "component_flexibility",
+      "name": "Aprovechar flexibilidad de componentes",
+      "goal": "Adaptar controles y contenido al contexto, breakpoint, dispositivo, densidad y tarea.",
+      "apply": [
+        "cambiar distribución o componente cuando el mismo patrón no funciona en todos los tamaños",
+        "revelar, dividir, redimensionar, reposicionar o sustituir al cruzar breakpoints",
+        "usar layouts canónicos como punto de partida"
+      ],
+      "avoid": [
+        "escalar todo proporcionalmente",
+        "mantener navegación móvil en desktop sin revisar ergonomía",
+        "ocultar funciones esenciales sin alternativa"
+      ]
+    },
+    {
+      "id": "hero_moments",
+      "name": "Combinar tácticas en hero moments",
+      "goal": "Crear un momento breve, inesperado y memorable alrededor de una interacción o información crítica.",
+      "apply": [
+        "combinar solo tácticas que refuercen el mismo foco",
+        "usar uno o dos hero moments por producto o flujo principal",
+        "elegir momentos emocionalmente relevantes o claves para completar la tarea"
+      ],
+      "avoid": [
+        "convertir cada sección en un hero",
+        "usar sorpresa en acciones destructivas o repetitivas",
+        "hacer que la expresión distraiga del objetivo"
+      ]
+    }
+  ],
+  "coordination_rule": {
+    "minimum_primary_axes": 2,
+    "maximum_primary_axes": 4,
+    "explanation": "Elegir pocos ejes expresivos coordinados. Puntuar alto en todo produce ruido, no expresividad.",
+    "hero_limit": "Uno o dos hero moments por producto o flujo principal."
+  }
+}
