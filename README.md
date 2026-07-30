@@ -6,11 +6,13 @@ pero está pensado para crecer — hoy incluye también `m3-expressive` (diseño
 
 ## Skills en este marketplace
 
-| Skill | Qué hace |
-|---|---|
-| [`project-doc`](plugins/project-doc/skills/project-doc/SKILL.md) | Monta y mantiene `CLAUDE.md`/`AGENTS.md`, un archivo de contexto vivo (`PROJECT.md`), sus derivados (`PRODUCT.md`, `DESIGN.md`, `ENGINEER.md`), una taxonomía estándar de `docs/`, e `INDEX.md` por carpeta. |
-| [`m3-expressive`](plugins/m3-expressive/skills/m3-expressive/SKILL.md) | Diseña o corrige cualquier interfaz usando Material 3 Expressive de Google como filosofía rectora — color, tipografía, forma, motion y accesibilidad. |
-| [`anti-slop`](plugins/anti-slop/skills/anti-slop/SKILL.md) | Filtro anti-"IA slop" para texto en prosa (emails, reportes, posts, specs) en inglés y español, con un validador determinístico (`scripts/validate.py`). |
+| Skill | Qué hace | Requiere |
+|---|---|---|
+| [`project-doc`](plugins/project-doc/skills/project-doc/SKILL.md) | Monta y mantiene `CLAUDE.md`/`AGENTS.md`, un archivo de contexto vivo (`PROJECT.md`), sus derivados (`PRODUCT.md`, `DESIGN.md`, `ENGINEER.md`), una taxonomía estándar de `docs/`, e `INDEX.md` por carpeta. | Nada aparte del agente |
+| [`m3-expressive`](plugins/m3-expressive/skills/m3-expressive/SKILL.md) | Diseña o corrige cualquier interfaz usando Material 3 Expressive de Google como filosofía rectora — color, tipografía, forma, motion y accesibilidad. | Nada aparte del agente |
+| [`anti-slop`](plugins/anti-slop/skills/anti-slop/SKILL.md) | Filtro anti-"IA slop" para texto en prosa (emails, reportes, posts, specs) en inglés y español, con un validador determinístico (`scripts/validate.py`). | Python 3 disponible donde corra el agente |
+
+El detalle completo de cada una (workflows, reglas, límites conocidos) vive en su propio `SKILL.md` — el README no lo duplica a propósito, para no tener dos fuentes de verdad que se desalineen.
 
 `project-doc` nace de destilar la metodología usada en un proyecto real (Colsanitas/Tikka) y generalizarla para cualquier proyecto, nuevo o existente, propio o de un equipo que hoy no tiene ninguna estructura de este tipo.
 
