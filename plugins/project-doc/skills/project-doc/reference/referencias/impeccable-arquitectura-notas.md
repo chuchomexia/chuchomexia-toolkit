@@ -23,7 +23,7 @@ Fuente: [github.com/pbakaus/impeccable](https://github.com/pbakaus/impeccable), 
 - Documentación extensa vive en `docs/` y en archivos de configuración bajo `.impeccable/`, cargados solo cuando el subcomando los necesita.
 - Config compartida vs. local: `.impeccable/config.json` (contexto del proyecto, versionado) vs. `config.local.json` (gitignored, preferencias por desarrollador).
 
-## Qué tomamos para `project-doc-skill`
+## Qué tomamos para `project-doc`
 
 - **Entrada única + subcomandos**: nuestra skill `project-doc` sigue el mismo patrón — no expone 3 skills separadas para init/update/organizar, sino una sola con reconocimiento de intención (ver [01-invocacion-y-workflows.md](../01-invocacion-y-workflows.md)).
 - **Progressive disclosure**: el futuro `SKILL.md` debe ser delgado (frontmatter + índice de qué hace cada workflow) y remitir a archivos de referencia cargados bajo demanda — el mismo principio que ya aplicamos en esta carpeta de metodología (cada archivo es corto y enlaza a los demás en vez de repetir contenido). Ver [09-arquitectura-de-la-skill.md](../09-arquitectura-de-la-skill.md).

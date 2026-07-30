@@ -170,7 +170,7 @@ Esto significa que **cada release toca dos archivos de versión** (`.claude-plug
 ## Estructura del repo
 
 ```
-project-doc-skill/
+chuchomexia-toolkit/
   README.md
   FEEDBACK.md                     — protocolo de feedback de agentes hacia el mantenedor
   .claude-plugin/

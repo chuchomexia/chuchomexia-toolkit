@@ -1,6 +1,6 @@
 # Arquitectura de la skill
 
-Este archivo documenta las decisiones de empaquetado ya aplicadas en este repo (`project-doc-skill`), para que quede explícito el porqué de la estructura de carpetas.
+Este archivo documenta las decisiones de empaquetado ya aplicadas en este repo (`chuchomexia-toolkit`, antes `project-doc-skill`), para que quede explícito el porqué de la estructura de carpetas.
 
 ## Problema a evitar
 
@@ -17,7 +17,7 @@ Ver detalle del fetch en [referencias/impeccable-arquitectura-notas.md](referenc
 ## Estructura real de este repo
 
 ```
-project-doc-skill/              (repo raíz, futuro ítem de marketplace)
+chuchomexia-toolkit/            (repo raíz, marketplace)
   README.md                     — cara pública: qué es, cómo instalarla, en qué tools funciona
   skill/
     SKILL.md                    — delgado: frontmatter + índice de workflows
