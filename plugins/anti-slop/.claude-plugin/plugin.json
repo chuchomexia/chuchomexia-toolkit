@@ -1,0 +1,9 @@
+{
+  "name": "anti-slop",
+  "description": "Filtro anti-\"IA slop\" para cualquier texto en prosa (emails, reportes, posts, specs, código con comentarios). Detecta patrones delatores en inglés y español, con un validador determinístico (scripts/validate.py).",
+  "author": {
+    "name": "chuchomexia"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["writing", "editing", "style", "prose", "linter"]
+}

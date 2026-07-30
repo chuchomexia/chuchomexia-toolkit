@@ -1,7 +1,8 @@
 # chuchomexia-toolkit
 
 Marketplace privado de skills de Claude Code / Codex. Empezó con una sola skill (`project-doc`)
-pero está pensado para crecer — hoy incluye también `m3-expressive`, una skill de diseño de UI.
+pero está pensado para crecer — hoy incluye también `m3-expressive` (diseño de UI) y `anti-slop`
+(estilo de escritura).
 
 ## Skills en este marketplace
 
@@ -9,6 +10,7 @@ pero está pensado para crecer — hoy incluye también `m3-expressive`, una ski
 |---|---|
 | [`project-doc`](plugins/project-doc/skills/project-doc/SKILL.md) | Monta y mantiene `CLAUDE.md`/`AGENTS.md`, un archivo de contexto vivo (`PROJECT.md`), sus derivados (`PRODUCT.md`, `DESIGN.md`, `ENGINEER.md`), una taxonomía estándar de `docs/`, e `INDEX.md` por carpeta. |
 | [`m3-expressive`](plugins/m3-expressive/skills/m3-expressive/SKILL.md) | Diseña o corrige cualquier interfaz usando Material 3 Expressive de Google como filosofía rectora — color, tipografía, forma, motion y accesibilidad. |
+| [`anti-slop`](plugins/anti-slop/skills/anti-slop/SKILL.md) | Filtro anti-"IA slop" para texto en prosa (emails, reportes, posts, specs) en inglés y español, con un validador determinístico (`scripts/validate.py`). |
 
 `project-doc` nace de destilar la metodología usada en un proyecto real (Colsanitas/Tikka) y generalizarla para cualquier proyecto, nuevo o existente, propio o de un equipo que hoy no tiene ninguna estructura de este tipo.
 
@@ -37,6 +39,7 @@ Este repo **es** un marketplace de Claude Code (`.claude-plugin/marketplace.json
 /plugin marketplace add chuchomexia/project-doc-skill
 /plugin install project-doc@chuchomexia-toolkit
 /plugin install m3-expressive@chuchomexia-toolkit
+/plugin install anti-slop@chuchomexia-toolkit
 ```
 
 O desde la CLI, sin sesión interactiva:
@@ -45,6 +48,7 @@ O desde la CLI, sin sesión interactiva:
 claude plugin marketplace add chuchomexia/project-doc-skill
 claude plugin install project-doc@chuchomexia-toolkit
 claude plugin install m3-expressive@chuchomexia-toolkit
+claude plugin install anti-slop@chuchomexia-toolkit
 ```
 
 Para que un equipo lo reciba automáticamente al abrir un repo (sin correr `/plugin marketplace add` a mano), se puede declarar en `.claude/settings.json` de ese repo:
@@ -59,7 +63,8 @@ Para que un equipo lo reciba automáticamente al abrir un repo (sin correr `/plu
   },
   "enabledPlugins": {
     "project-doc@chuchomexia-toolkit": true,
-    "m3-expressive@chuchomexia-toolkit": true
+    "m3-expressive@chuchomexia-toolkit": true,
+    "anti-slop@chuchomexia-toolkit": true
   }
 }
 ```
@@ -77,6 +82,7 @@ Desde la CLI:
 codex plugin marketplace add chuchomexia/project-doc-skill
 codex plugin add project-doc@chuchomexia-toolkit
 codex plugin add m3-expressive@chuchomexia-toolkit
+codex plugin add anti-slop@chuchomexia-toolkit
 ```
 
 Desde la UI de Codex ("Add plugin marketplace"):
@@ -85,7 +91,7 @@ Desde la UI de Codex ("Add plugin marketplace"):
 |---|---|
 | Source | `chuchomexia/project-doc-skill` |
 | Git ref | `main` |
-| Sparse paths | (opcional) `.agents/plugins`, `plugins/project-doc` y `plugins/m3-expressive`, uno por línea — limita el clone a lo que el marketplace necesita |
+| Sparse paths | (opcional) `.agents/plugins`, `plugins/project-doc`, `plugins/m3-expressive` y `plugins/anti-slop`, uno por línea — limita el clone a lo que el marketplace necesita |
 
 Como el repo es privado, Codex necesita las mismas credenciales de git/GitHub que ya uses en tu terminal para acceder a él (igual que Claude Code).
 
@@ -190,10 +196,22 @@ project-doc-skill/
         m3-expressive/
           SKILL.md                  — filosofía, tácticas y mapa de referencias + sección Feedback
           references/                — 14 módulos JSON + cheatsheet, cargados bajo demanda
+    anti-slop/
+      .claude-plugin/
+        plugin.json
+      .codex-plugin/
+        plugin.json
+      skills/
+        anti-slop/
+          SKILL.md                   — flujo, reglas prácticas y las tres capas de detección + sección Feedback
+          reference/                 — patrones delatores en/es, cargados bajo demanda
+          scripts/validate.py        — linter determinístico (score + exit code)
   .claude/skills/project-doc    — symlink a plugins/project-doc/skills/project-doc (dogfooding)
   .claude/skills/m3-expressive  — symlink a plugins/m3-expressive/skills/m3-expressive (dogfooding)
+  .claude/skills/anti-slop      — symlink a plugins/anti-slop/skills/anti-slop (dogfooding)
   .codex/skills/project-doc     — symlink a plugins/project-doc/skills/project-doc (dogfooding)
   .codex/skills/m3-expressive   — symlink a plugins/m3-expressive/skills/m3-expressive (dogfooding)
+  .codex/skills/anti-slop       — symlink a plugins/anti-slop/skills/anti-slop (dogfooding)
 ```
 
 Inspirado en la arquitectura de [Impeccable](https://github.com/pbakaus/impeccable) (entrada única + progressive disclosure), en la [documentación oficial de marketplaces de Claude Code](https://code.claude.com/docs/en/plugin-marketplaces) y en la [documentación oficial de plugins de Codex](https://developers.openai.com/codex/plugins/build).

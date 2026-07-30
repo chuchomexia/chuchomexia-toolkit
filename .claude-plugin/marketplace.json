@@ -14,6 +14,11 @@
       "name": "m3-expressive",
       "source": "./plugins/m3-expressive",
       "description": "Diseña o corrige interfaces usando Material 3 Expressive como filosofía rectora: color, tipografía, forma, motion y accesibilidad."
+    },
+    {
+      "name": "anti-slop",
+      "source": "./plugins/anti-slop",
+      "description": "Filtro anti-\"IA slop\" para texto en prosa, con validador determinístico en inglés y español."
     }
   ]
 }
