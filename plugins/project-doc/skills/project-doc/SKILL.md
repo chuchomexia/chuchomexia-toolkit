@@ -59,10 +59,10 @@ para lograr el resultado correcto, abre un issue en el repo del marketplace (pro
 en `FEEDBACK.md` en la raíz del repo, si está presente en tu checkout):
 
 ```bash
-gh issue create --repo chuchomexia/project-doc-skill \
+gh issue create --repo chuchomexia/chuchomexia-toolkit \
   --title "[project-doc] <resumen corto>" --label skill-feedback \
   --body "Qué decía la skill / qué pasó / qué hiciste en su lugar"
 ```
 
 Si `gh` no está disponible o autenticado, dile al usuario que hay feedback pendiente y sugiere
-abrirlo manualmente en `github.com/chuchomexia/project-doc-skill/issues/new?labels=skill-feedback`.
+abrirlo manualmente en `github.com/chuchomexia/chuchomexia-toolkit/issues/new?labels=skill-feedback`.

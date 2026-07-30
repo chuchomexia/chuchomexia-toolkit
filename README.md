@@ -36,7 +36,7 @@ Detalle completo de cada workflow en [plugins/project-doc/skills/project-doc/ref
 Este repo **es** un marketplace de Claude Code (`.claude-plugin/marketplace.json` en la raíz). Como es privado, cada persona necesita acceso de lectura al repo en GitHub antes de poder agregarlo.
 
 ```
-/plugin marketplace add chuchomexia/project-doc-skill
+/plugin marketplace add chuchomexia/chuchomexia-toolkit
 /plugin install project-doc@chuchomexia-toolkit
 /plugin install m3-expressive@chuchomexia-toolkit
 /plugin install anti-slop@chuchomexia-toolkit
@@ -45,7 +45,7 @@ Este repo **es** un marketplace de Claude Code (`.claude-plugin/marketplace.json
 O desde la CLI, sin sesión interactiva:
 
 ```bash
-claude plugin marketplace add chuchomexia/project-doc-skill
+claude plugin marketplace add chuchomexia/chuchomexia-toolkit
 claude plugin install project-doc@chuchomexia-toolkit
 claude plugin install m3-expressive@chuchomexia-toolkit
 claude plugin install anti-slop@chuchomexia-toolkit
@@ -57,7 +57,7 @@ Para que un equipo lo reciba automáticamente al abrir un repo (sin correr `/plu
 {
   "extraKnownMarketplaces": {
     "chuchomexia-toolkit": {
-      "source": { "source": "github", "repo": "chuchomexia/project-doc-skill" },
+      "source": { "source": "github", "repo": "chuchomexia/chuchomexia-toolkit" },
       "autoUpdate": true
     }
   },
@@ -79,7 +79,7 @@ Codex también tiene marketplaces, con su propio formato de manifiesto (`.agents
 Desde la CLI:
 
 ```bash
-codex plugin marketplace add chuchomexia/project-doc-skill
+codex plugin marketplace add chuchomexia/chuchomexia-toolkit
 codex plugin add project-doc@chuchomexia-toolkit
 codex plugin add m3-expressive@chuchomexia-toolkit
 codex plugin add anti-slop@chuchomexia-toolkit
@@ -89,7 +89,7 @@ Desde la UI de Codex ("Add plugin marketplace"):
 
 | Campo | Valor |
 |---|---|
-| Source | `chuchomexia/project-doc-skill` |
+| Source | `chuchomexia/chuchomexia-toolkit` |
 | Git ref | `main` |
 | Sparse paths | (opcional) `.agents/plugins`, `plugins/project-doc`, `plugins/m3-expressive` y `plugins/anti-slop`, uno por línea — limita el clone a lo que el marketplace necesita |
 
@@ -138,7 +138,7 @@ detectó que la skill le dio información incorrecta o incompleta, abra un issue
 efectivamente lo haga y tenga `gh` autenticado contra este repo. Protocolo completo, plantilla y
 qué hacer si `gh` no está disponible en [FEEDBACK.md](FEEDBACK.md).
 
-Para revisar lo acumulado: `gh issue list --repo chuchomexia/project-doc-skill --label skill-feedback`.
+Para revisar lo acumulado: `gh issue list --repo chuchomexia/chuchomexia-toolkit --label skill-feedback`.
 
 ## Agregar más skills a este marketplace
 
@@ -152,7 +152,7 @@ Este repo está pensado para crecer más allá de `project-doc`. Para sumar una 
 6. Agregar al final del `SKILL.md` la sección "Feedback" (copiar el bloque de `plugins/m3-expressive/skills/m3-expressive/SKILL.md`) para que la skill quede conectada al protocolo de [FEEDBACK.md](FEEDBACK.md).
 7. Opcional: symlinks de dogfooding `.claude/skills/<nombre-skill>` y `.codex/skills/<nombre-skill>` apuntando a `../../plugins/<nombre-skill>/skills/<nombre-skill>`.
 8. Validar con `claude plugin validate .` antes de hacer commit. Codex no trae un comando de validación equivalente todavía — probar con `codex plugin marketplace add ./` + `codex plugin add <nombre>@chuchomexia-toolkit` localmente.
-9. Revisar periódicamente los issues con label `skill-feedback` (`gh issue list --repo chuchomexia/project-doc-skill --label skill-feedback`) antes de decidir qué corregir en cada skill.
+9. Revisar periódicamente los issues con label `skill-feedback` (`gh issue list --repo chuchomexia/chuchomexia-toolkit --label skill-feedback`) antes de decidir qué corregir en cada skill.
 
 ## Asimetría entre Claude Code y Codex (a tener presente)
 

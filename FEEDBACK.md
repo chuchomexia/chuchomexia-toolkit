@@ -20,7 +20,7 @@ que ocurrió en una sesión real.
 ## Cómo dejarlo: issue en GitHub
 
 ```bash
-gh issue create --repo chuchomexia/project-doc-skill \
+gh issue create --repo chuchomexia/chuchomexia-toolkit \
   --title "[<nombre-skill>] <resumen corto del problema>" \
   --label skill-feedback \
   --body "**Qué decía la skill:** ...
@@ -40,7 +40,7 @@ gh label create skill-feedback --color FFA500 \
 Si `gh` no está autenticado o no está disponible en el entorno del agente, no inventes una
 alternativa silenciosa: dile al usuario en la respuesta que hay feedback pendiente y sugiere que
 abra el issue manualmente en
-`https://github.com/chuchomexia/project-doc-skill/issues/new?labels=skill-feedback`, con el mismo
+`https://github.com/chuchomexia/chuchomexia-toolkit/issues/new?labels=skill-feedback`, con el mismo
 contenido de la plantilla de arriba.
 
 ## Qué hace Jesús con esto
